@@ -36,23 +36,20 @@ namespace CS_LABS
 
         void Work_2()
         {
-            Console.WriteLine("This work where u should type a values of variables A, B and C:");
-                    Console.WriteLine("a*x^4 + b*x^2 + c = 0");
-                    Console.WriteLine("A: ");
-                int a = ToInt(Console.ReadLine());
-                System.Console.Clear();
-                    Console.WriteLine($"{a}*x^4 + b*x^2 + c = 0");
-                    Console.WriteLine("B: ");
-                int b = ToInt(Console.ReadLine());
-                System.Console.Clear();
-                    Console.WriteLine($"{a}*x^4 + {b}*x^2 + c = 0");
-                    Console.WriteLine("C: ");
-                int c = ToInt(Console.ReadLine());
-                System.Console.Clear();
-                    Console.WriteLine($"{a}*x^4 + {b}*x^2 + {c} = 0");
-                    double[] answers = BiSquare(a, b, c);
-                    Console.WriteLine("Answer: ");
-            for (int i = 0; i < answers.Length; i++) Console.WriteLine(answers + "");
+            double[] dc = new double[2];
+            double[] cc = new double[2];
+            Console.WriteLine("This work where u should type a values of coordinates dot X, Y and circle X, Y and his radius:");
+            Console.WriteLine("Dot X: ");
+                dc[0] = ToInt(Console.ReadLine());
+                Console.WriteLine("Dot Y: ");
+                dc[1] = ToInt(Console.ReadLine());
+                Console.WriteLine("Circle X: ");
+                cc[0] = ToInt(Console.ReadLine());
+                Console.WriteLine("Circle Y: ");
+                cc[1] = ToInt(Console.ReadLine());
+                Console.WriteLine("Circle radius: ");
+                double r = ToInt(Console.ReadLine());
+            Console.WriteLine(Coordinate(dc, r, cc));
         }
     }
 }
