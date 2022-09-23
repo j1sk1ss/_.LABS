@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+
 namespace CS_LABS
 {
     public class Quest_1 : Math
@@ -17,6 +19,9 @@ namespace CS_LABS
                     break;
                 case 3:
                     Work_3();
+                    break;
+                case 4:
+                    Work_4();
                     break;
                 default:
                     Console.WriteLine("Wrong number of work.");
@@ -98,6 +103,28 @@ namespace CS_LABS
                     Console.WriteLine("This year was called like Pig");
                     break;
             }
+        }
+
+        void Work_4()
+        {
+            // A - рубли со степендии, B - стартовые расходы, ув на 3% в месяц (10 месяцев). Найти дефицит бюджета.
+            Console.WriteLine("Type scholarship: ");
+            float scholarship = ToInt(Console.ReadLine());
+            Console.WriteLine("Type start every month spending: ");
+            float spending = ToInt(Console.ReadLine());
+            float budgetDeficit = 0;
+                if (scholarship > spending) {
+                    Console.WriteLine("Scholarship is higher then spending!");
+                }
+                else
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                            spending += .03f * spending;
+                            budgetDeficit += (spending - scholarship);
+                    }
+                }
+        Console.WriteLine(budgetDeficit + $" needs to be taken from parents with {spending} every month spending");
         }
     }
 }
