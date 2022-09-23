@@ -15,6 +15,9 @@ namespace CS_LABS
                 case 2:
                     Work_2();
                     break;
+                case 3:
+                    Work_3();
+                    break;
                 default:
                     Console.WriteLine("Wrong number of work.");
                     break;
@@ -50,6 +53,51 @@ namespace CS_LABS
                 Console.WriteLine("Circle radius: ");
                 double r = ToInt(Console.ReadLine());
             Console.WriteLine(Coordinate(dc, r, cc));
+        }
+
+        void Work_3()
+        {
+            Console.WriteLine("In this work u should type a year and he will be converted to old Japan format:");
+            int? year = ToInt(Console.ReadLine());
+            if (year > 0) switch (year % 12)
+            {
+                case 1:
+                    Console.WriteLine("This year was called like Rat");
+                    break;
+                case 2:
+                    Console.WriteLine("This year was called like Cow");
+                    break;
+                case 3:
+                    Console.WriteLine("This year was called like Tiger");
+                    break;
+                case 4:
+                    Console.WriteLine("This year was called like Rabbit");
+                    break;
+                case 5:
+                    Console.WriteLine("This year was called like Dragon");
+                    break;
+                case 6:
+                    Console.WriteLine("This year was called like Snake");
+                    break;
+                case 7:
+                    Console.WriteLine("This year was called like Hourse");
+                    break;
+                case 8:
+                    Console.WriteLine("This year was called like Ship");
+                    break;
+                case 9:
+                    Console.WriteLine("This year was called like Monkey");
+                    break;
+                case 10:
+                    Console.WriteLine("This year was called like Chicken");
+                    break;
+                case 11:
+                    Console.WriteLine("This year was called like Dog");
+                    break;
+                case 0:
+                    Console.WriteLine("This year was called like Pig");
+                    break;
+            }
         }
     }
 }
