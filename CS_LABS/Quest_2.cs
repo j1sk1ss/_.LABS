@@ -13,7 +13,7 @@ namespace CS_LABS
         public void Main()
         {
             AddVoids();
-            Console.WriteLine("Type a number of work: ");
+            Console.WriteLine("Type a number of work:  ");
             _works[ToInt(Console.ReadLine())]();
         }
 
