@@ -1,19 +1,22 @@
 ﻿using System;
 
 namespace CS_LABS
-{
+{ 
     class Program : Math
     {
-        private static Math _math = new Math();
-        static void Main()
+        private static void Main()
         {
             Console.WriteLine("Choose a Lab: ");
-            int? k = _math.ToInt(Console.ReadLine());
+            int? k = ToInt(Console.ReadLine());
             switch (k)
             {
                 case 1:
-                    Quest_1 quest1 = new Quest_1();
+                    var quest1 = new Quest_1();
                     quest1.Main();
+                    break;
+                case 2:
+                    var quest2 = new Quest_2();
+                    quest2.Main();
                     break;
                 default:
                     Console.WriteLine("Wrong number of Lab.");

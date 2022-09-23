@@ -29,90 +29,53 @@ namespace CS_LABS
             }
         }
 
-        void Work_1()
+        private static void Work_1()
         {
-            Console.WriteLine("This work where u should type a values of variables Y and X:");
+            Console.WriteLine("This work where u should type a value of variable X:");
                 Console.WriteLine("X: ");
                 int x = ToInt(Console.ReadLine());
-                Console.WriteLine("Y: ");
-                int y = ToInt(Console.ReadLine());
                 double? answer = 2 * System.Math.Atan(3 * x) * (-System.Math.Sqrt(x)) -
-                              ((1) / 12 * System.Math.Pow(x, 2) + 7 * x - 5);
+                                 ((1) / 12 * System.Math.Pow(x, 2) + 7 * x - 5);
                 Console.WriteLine("Answer: ");
             Console.Write(answer);
         }
 
-        void Work_2()
+        private static void Work_2()
         {
-            double[] dc = new double[2];
-            double[] cc = new double[2];
+            double[,] cords = new double[2, 2];
             Console.WriteLine("This work where u should type a values of coordinates dot X, Y and circle X, Y and his radius:");
-            Console.WriteLine("Dot X: ");
-                dc[0] = ToInt(Console.ReadLine());
-                Console.WriteLine("Dot Y: ");
-                dc[1] = ToInt(Console.ReadLine());
-                Console.WriteLine("Circle X: ");
-                cc[0] = ToInt(Console.ReadLine());
-                Console.WriteLine("Circle Y: ");
-                cc[1] = ToInt(Console.ReadLine());
-                Console.WriteLine("Circle radius: ");
+            for (int i = 0; i < 2; i++)
+            {
+                if (i == 0)Console.WriteLine("Type Dot coordinates:");
+                else Console.WriteLine("Type Circle coordinates:");
+                for (int j = 0; j < 2; j++)
+                {
+                    cords[i, j] = ToInt(Console.ReadLine());
+                }
+            }
+            Console.WriteLine("Circle radius: ");
                 double r = ToInt(Console.ReadLine());
-            Console.WriteLine(Coordinate(dc, r, cc));
+            Console.WriteLine(CircleCheck(cords, r));
         }
 
-        void Work_3()
+        private static void Work_3()
         {
             Console.WriteLine("In this work u should type a year and he will be converted to old Japan format:");
-            int? year = ToInt(Console.ReadLine());
-            if (year > 0) switch (year % 12)
-            {
-                case 1:
-                    Console.WriteLine("This year was called like Rat");
-                    break;
-                case 2:
-                    Console.WriteLine("This year was called like Cow");
-                    break;
-                case 3:
-                    Console.WriteLine("This year was called like Tiger");
-                    break;
-                case 4:
-                    Console.WriteLine("This year was called like Rabbit");
-                    break;
-                case 5:
-                    Console.WriteLine("This year was called like Dragon");
-                    break;
-                case 6:
-                    Console.WriteLine("This year was called like Snake");
-                    break;
-                case 7:
-                    Console.WriteLine("This year was called like Hourse");
-                    break;
-                case 8:
-                    Console.WriteLine("This year was called like Ship");
-                    break;
-                case 9:
-                    Console.WriteLine("This year was called like Monkey");
-                    break;
-                case 10:
-                    Console.WriteLine("This year was called like Chicken");
-                    break;
-                case 11:
-                    Console.WriteLine("This year was called like Dog");
-                    break;
-                case 0:
-                    Console.WriteLine("This year was called like Pig");
-                    break;
-            }
+                int? year = ToInt(Console.ReadLine());
+                string[] yearNames =
+                {
+                    "Rat", "Cow", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Ship", "Monkey", "Chicken", "Dog", "Pig"
+                };
+            if (year > 0) Console.WriteLine($"This year is called like {yearNames[yearNames.Length % 12]}.");
         }
 
-        void Work_4()
+        private static void Work_4()
         {
-            // A - рубли со степендии, B - стартовые расходы, ув на 3% в месяц (10 месяцев). Найти дефицит бюджета.
             Console.WriteLine("Type scholarship: ");
-            float scholarship = ToInt(Console.ReadLine());
+            double scholarship = ToDouble(Console.ReadLine());
             Console.WriteLine("Type start every month spending: ");
-            float spending = ToInt(Console.ReadLine());
-            float budgetDeficit = 0;
+            double spending = ToDouble(Console.ReadLine());
+            double budgetDeficit = 0;
                 if (scholarship > spending) {
                     Console.WriteLine("Scholarship is higher then spending!");
                 }
@@ -120,11 +83,11 @@ namespace CS_LABS
                 {
                     for (int i = 0; i < 10; i++)
                     {
-                            spending += .03f * spending;
+                            spending += .03d * spending;
                             budgetDeficit += (spending - scholarship);
                     }
+                    Console.WriteLine(budgetDeficit + $" needs to be taken from parents with {spending} every month spending");
                 }
-        Console.WriteLine(budgetDeficit + $" needs to be taken from parents with {spending} every month spending");
         }
     }
 }

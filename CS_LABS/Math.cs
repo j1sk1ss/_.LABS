@@ -5,7 +5,7 @@ namespace CS_LABS
 {
     public class Math
     {
-        public int ToInt(string str)
+        protected static int ToInt(string str)
         {
             try
             {
@@ -13,16 +13,29 @@ namespace CS_LABS
             }
             catch (FormatException e)
             {
+                Console.WriteLine("This char is not a integer number!");
+                throw;
+            }
+        }
+
+        protected static double ToDouble(string str)
+        {
+            try
+            {
+                return Convert.ToDouble(str);
+            }
+            catch (FormatException e)
+            {
                 Console.WriteLine("This char is not a number!");
                 throw;
             }
         }
-        public static string Coordinate(double[] circle, double radius, double[] dot)
+        protected static string CircleCheck(double[,] coordinates, double radius) // 00 01 Dot; 10 11 Circle;
         {
-            if (System.Math.Pow(dot[0] - circle[0], 2) + System.Math.Pow(dot[1] - circle[1], 2) <=
-                System.Math.Pow(radius, 2)) return "Dot in this circle."; 
-            if (System.Math.Pow(dot[0] - circle[0], 2) + System.Math.Pow(dot[1] - circle[1], 2) ==
-                System.Math.Pow(radius, 2)) return "Dot on the circle";
+            double? tmpC = System.Math.Pow(coordinates[0, 0] - coordinates[1, 0], 2) +
+                           System.Math.Pow(coordinates[0, 1] - coordinates[1, 1], 2);
+            if (tmpC < System.Math.Pow(radius, 2)) return "Dot in this circle."; 
+            if (tmpC == System.Math.Pow(radius, 2)) return "Dot on the circle.";
             return "Dot not in this circle.";
         }
     }
