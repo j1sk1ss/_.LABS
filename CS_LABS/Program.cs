@@ -7,8 +7,7 @@ namespace CS_LABS
         private static void Main()
         {
             Console.WriteLine("Choose a Lab: ");
-            int? k = ToInt(Console.ReadLine());
-            switch (k)
+            switch (ToInt(Console.ReadLine()))
             {
                 case 1:
                     var quest1 = new Quest_1();

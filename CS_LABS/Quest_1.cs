@@ -20,16 +20,14 @@ namespace CS_LABS
             Console.WriteLine("Type a number of work: ");
             _works[ToInt(Console.ReadLine())]();
         }
-
         private static void Work_1()
         {
             Console.WriteLine("This work where u should type a value of variable X:");
                 Console.WriteLine("X: ");
-                int x = ToInt(Console.ReadLine());
-                double? answer = 2 * System.Math.Atan(3 * x) * (-System.Math.Sqrt(x)) -
-                                 ((1) / 12 * System.Math.Pow(x, 2) + 7 * x - 5);
-                Console.WriteLine("Answer: ");
-            Console.Write(answer);
+                double x = ToDouble(Console.ReadLine());
+            Console.WriteLine("Answer: ");
+            Console.Write(2 * System.Math.Atan(3 * x) * (-System.Math.Sqrt(x)) -
+                          ((1) / 12 * System.Math.Pow(x, 2) + 7 * x - 5));
         }
 
         private static void Work_2()
@@ -40,10 +38,10 @@ namespace CS_LABS
             {
                 if (i == 0)Console.WriteLine("Type Dot coordinates:");
                 else Console.WriteLine("Type Circle coordinates:");
-                for (int j = 0; j < 2; j++)
-                {
-                    cords[i, j] = ToInt(Console.ReadLine());
-                }
+                    for (int j = 0; j < 2; j++)
+                    {
+                        cords[i, j] = ToInt(Console.ReadLine());
+                    }
             }
             Console.WriteLine("Circle radius: ");
                 double r = ToInt(Console.ReadLine());
@@ -53,20 +51,20 @@ namespace CS_LABS
         private static void Work_3()
         {
             Console.WriteLine("In this work u should type a year and he will be converted to old Japan format:");
-                int? year = ToInt(Console.ReadLine());
+                int year = ToInt(Console.ReadLine());
                 string[] yearNames =
                 {
                     "Rat", "Cow", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Ship", "Monkey", "Chicken", "Dog", "Pig"
                 };
-            if (year > 0) Console.WriteLine($"This year is called like {yearNames[yearNames.Length % 12]}.");
+            if (year > 0) Console.WriteLine($"This year is called like {yearNames[year % 12]}.");
         }
 
         private static void Work_4()
         {
             Console.WriteLine("Type scholarship: ");
-            double scholarship = ToDouble(Console.ReadLine());
+            var scholarship = ToDouble(Console.ReadLine());
             Console.WriteLine("Type start every month spending: ");
-            double spending = ToDouble(Console.ReadLine());
+            var spending = ToDouble(Console.ReadLine());
             double budgetDeficit = 0;
                 if (scholarship > spending) {
                     Console.WriteLine("Scholarship is higher then spending!");
