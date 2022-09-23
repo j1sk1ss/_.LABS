@@ -1,32 +1,24 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace CS_LABS
 {
     public class Quest_1 : Math
     {
+        private readonly Dictionary<int, Action> _works = new Dictionary<int, Action>();
+        private void AddVoids()
+        {
+            _works.Add(1,Work_1);
+            _works.Add(2,Work_2);
+            _works.Add(3,Work_3);
+            _works.Add(4,Work_4);
+        }
         public void Main()
         {
+            AddVoids();
             Console.WriteLine("Type a number of work: ");
-            int? work = ToInt(Console.ReadLine());
-            switch (work)
-            {
-                case 1:
-                    Work_1();
-                    break;
-                case 2:
-                    Work_2();
-                    break;
-                case 3:
-                    Work_3();
-                    break;
-                case 4:
-                    Work_4();
-                    break;
-                default:
-                    Console.WriteLine("Wrong number of work.");
-                    break;
-            }
+            _works[ToInt(Console.ReadLine())]();
         }
 
         private static void Work_1()
