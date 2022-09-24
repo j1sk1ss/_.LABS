@@ -12,7 +12,7 @@ namespace CS_LABS
             _works.Add(1,Work_1);
             _works.Add(2,Work_2);
             _works.Add(3,Work_3);
-            _works.Add(4,Work_3);
+            _works.Add(4,Work_4);
         }
         public void Main()
         {
@@ -90,7 +90,16 @@ namespace CS_LABS
 
         private void Work_4()
         {
-            
+            Random random = new Random();
+            Console.WriteLine("Type size of first array: ");
+            int s1 = _math.ToInt(Console.ReadLine());
+                Console.WriteLine("Type size of second array: ");
+                int s2 = _math.ToInt(Console.ReadLine());
+                int[] array1 = _math.FillArrayOfInts(100, s1);
+                int[] array2 = _math.FillArrayOfInts(100, s2);
+                int[] endAr = _math.Sort(_math.UniteArrays(array1,array2));
+            Console.WriteLine("Answer is: ");
+            for (int i = 0; i < endAr.Length; i++) Console.Write(endAr[i] + "; ");
         }
     }
 }
