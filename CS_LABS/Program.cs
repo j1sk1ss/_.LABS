@@ -2,12 +2,13 @@
 
 namespace CS_LABS
 { 
-    class Program : Math
+    class Program
     {
         private static void Main()
         {
+            Math math = new Math();
             Console.WriteLine("Choose a Lab: ");
-            switch (ToInt(Console.ReadLine()))
+            switch (math.ToInt(Console.ReadLine()))
             {
                 case 1:
                     var quest1 = new Quest_1();

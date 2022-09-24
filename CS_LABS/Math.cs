@@ -5,7 +5,7 @@ namespace CS_LABS
 {
     public class Math
     {
-        protected static int ToInt(string str)
+        public int ToInt(string str)
         {
             try
             {
@@ -18,7 +18,7 @@ namespace CS_LABS
             }
         }
 
-        protected static double ToDouble(string str)
+        public double ToDouble(string str)
         {
             try
             {
@@ -30,7 +30,7 @@ namespace CS_LABS
                 throw;
             }
         }
-        protected static string CircleCheck(double[,] coordinates, double radius) // 00 01 Dot; 10 11 Circle;
+        public string CircleCheck(double[,] coordinates, double radius) // 00 01 Dot; 10 11 Circle;
         {
             double? tmpC = System.Math.Pow(coordinates[0, 0] - coordinates[1, 0], 2) +
                            System.Math.Pow(coordinates[0, 1] - coordinates[1, 1], 2);
