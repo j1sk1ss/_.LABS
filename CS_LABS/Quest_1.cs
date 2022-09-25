@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace CS_LABS
 {
-    public class Quest_1
+    public class Quest1
     {
-        private Math _math = new Math();
+        private readonly Math _math = new Math();
         private readonly Dictionary<int, Action> _works = new Dictionary<int, Action>();
         private void AddVoids()
         {
@@ -25,7 +25,7 @@ namespace CS_LABS
         {
             Console.WriteLine("This work where u should type a value of variable X:");
                 Console.WriteLine("X: ");
-                double x = _math.ToDouble(Console.ReadLine());
+                var x = _math.ToDouble(Console.ReadLine());
             Console.WriteLine("Answer: ");
             Console.Write(2 * System.Math.Atan(3 * x) * (-System.Math.Sqrt(x)) -
                           (1 / 12.0 * System.Math.Pow(x, 2) + 7 * x - 5));
@@ -33,16 +33,15 @@ namespace CS_LABS
 
         private void Work_2()
         {
-            double[,] cords = new double[2, 2];
+            var cords = new double[2, 2];
             Console.WriteLine("This work where u should type a values of coordinates dot X, Y and circle X, Y and his radius:");
-            for (int i = 0; i < 2; i++)
+            for (var i = 0; i < 2; i++)
             {
-                if (i == 0)Console.WriteLine("Type Dot coordinates:");
-                else Console.WriteLine("Type Circle coordinates:");
-                    for (int j = 0; j < 2; j++)
-                    {
-                        cords[i, j] = _math.ToDouble(Console.ReadLine());
-                    }
+                Console.WriteLine(i == 0 ? "Type Dot coordinates:" : "Type Circle coordinates:");
+                for (var j = 0; j < 2; j++)
+                { 
+                    cords[i, j] = _math.ToDouble(Console.ReadLine());
+                }
             }
             Console.WriteLine("Circle radius: ");
                 double r = _math.ToInt(Console.ReadLine());

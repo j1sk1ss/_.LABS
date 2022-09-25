@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CS_LABS
 {
-    public class Quest_2
+    public class Quest2
     {
-        private Math _math = new Math();
+        private readonly Math _math = new Math();
         private readonly Dictionary<int, Action> _works = new Dictionary<int, Action>();
         private void AddVoids()
         {
@@ -26,12 +27,12 @@ namespace CS_LABS
             Console.WriteLine("Write count of elements: ");
             var count = _math.ToInt(Console.ReadLine());
             Console.WriteLine("Write E in n >= E: ");
-            double E = _math.ToInt(Console.ReadLine());
+            double e = _math.ToInt(Console.ReadLine());
                 double? answer = 0;
                 for (var i = 0; i < count; i++)
                 {
                     var number = System.Math.Pow(-1, i - 1) / System.Math.Pow(i, i);
-                    if (System.Math.Abs(number) >= E) answer += number;
+                    if (System.Math.Abs(number) >= e) answer += number;
                 }
             Console.WriteLine($"{answer} is answer.");
         }
@@ -39,67 +40,54 @@ namespace CS_LABS
         private void Work_2()
         {
             Console.WriteLine("Read a number, what should be checked: ");
-            int k;
-                try
+            var number = _math.ToInt(Console.ReadLine()).ToString(); // Checks what char user write
+            var uniq = true;
+                for (var i = 0; i < number.Length; i++)
                 {
-                    k = Convert.ToInt32(Console.ReadLine());
+                    if (!number.Where((t, j) => number[i] == t && i != j).Any()) continue;
+                    Console.WriteLine("This number don't have uniq numbers."); i = number.Length;
+                    uniq = false;
                 }
-                catch (FormatException e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-            string number = k.ToString();
-            bool uniq = true;
-            for (int i = 0; i < number.Length; i++)
-            {
-                for (int j = 0; j < number.Length; j++)
-                {
-                    if (number[i] == number[j] && i != j) {Console.WriteLine("This number don't have uniq numbers."); i = number.Length;
-                        uniq = false;
-                        break;
-                    }
-                }
-            }
             if (uniq) Console.WriteLine("This number have all uniq numbers.");
         }
 
         private void Work_3()
         {
             Console.WriteLine("Type a lenght of array that will be filed by random integer numbers: ");
-            int lenght = _math.ToInt(Console.ReadLine());
-            Random random = new Random();
-                int[] array = new int[lenght];
-                for (int i = 0; i < lenght; i++) array[i] = random.Next() % 100;
+            var lenght = _math.ToInt(Console.ReadLine());
+            var array = _arrays.FillArrayOfInts(100, lenght);
                 int min = Int32.MaxValue, max = Int32.MinValue;
-                for (int i = 0; i < lenght; i++)
-                {
-                    Console.Write(array[i] + " ");
-                    switch (i % 2)
+                Console.WriteLine($"Array is: {Arrays.PrintArray(array)}");
+                    for (var i = 0; i < lenght; i++)
                     {
-                        case 0:
-                            if (min > array[i]) min = array[i];
-                            break;
-                        case 1:
-                            if (max < array[i]) max = array[i];
-                            break;
+                        switch (i % 2)
+                        {
+                            case 0:
+                                if (min > array[i]) min = array[i];
+                                break;
+                            case 1:
+                                if (max < array[i]) max = array[i];
+                                break;
+                        }
                     }
-                }
                 Console.WriteLine($"Array and answer is sum of {min} and {max} and this is {min + max}");
         }
 
+        private readonly Arrays _arrays = new Arrays();
         private void Work_4()
         {
-            Random random = new Random();
-            Console.WriteLine("Type size of first array: ");
-            int s1 = _math.ToInt(Console.ReadLine());
-                Console.WriteLine("Type size of second array: ");
-                int s2 = _math.ToInt(Console.ReadLine());
-                int[] array1 = _math.FillArrayOfInts(100, s1);
-                int[] array2 = _math.FillArrayOfInts(100, s2);
-                int[] endAr = _math.Sort(_math.UniteArrays(array1,array2));
-            Console.WriteLine("Answer is: ");
-            for (int i = 0; i < endAr.Length; i++) Console.Write(endAr[i] + "; ");
+            Console.WriteLine("This work where u should write sizes of arrays: ");
+                Console.WriteLine("First array: ");
+                var size1 = _math.ToInt(Console.ReadLine());
+                    var array1 = _arrays.FillArrayOfInts(100, size1);
+                    Console.WriteLine($"Array is {Arrays.PrintArray(array1)}");
+                    Console.WriteLine($"Sorted array is {Arrays.PrintArray(Arrays.Sort(array1))}");
+                Console.WriteLine("Second array: ");
+                var size2 = _math.ToInt(Console.ReadLine());
+                    var array2 = _arrays.FillArrayOfInts(100, size2);
+                    Console.WriteLine($"Array is {Arrays.PrintArray(array2)}");
+                    Console.WriteLine($"Sorted array is {Arrays.PrintArray(Arrays.Sort(array2))}"); 
+            Console.WriteLine($"United array is: {Arrays.PrintArray(Arrays.Sort(_arrays.UniteArrays(array1,array2)))}");
         }
     }
 }

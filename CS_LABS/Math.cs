@@ -38,29 +38,5 @@ namespace CS_LABS
             if (tmpC == System.Math.Pow(radius, 2)) return "Dot on the circle.";
             return "Dot not in this circle.";
         }
-        Random random = new Random();
-        public int[] FillArrayOfInts(int maxRand, int size)
-        {
-       
-            int[] ar = new int[size];
-                for (int i = 0; i < ar.Length; i++) ar[i] = random.Next() % 100;
-            return ar;
-        }
-
-        public int[] UniteArrays(int[] array1, int[] array2)
-        {
-
-            int[] unar = new int[array1.Length + array2.Length];
-            for (int i = 0; i < array1.Length; i++) unar[i] = array1[i];
-            for (int i = array1.Length; i < array2.Length; i++) unar[i] = array2[i];
-
-            return unar;
-        }
-        public int[] Sort(int[] array)
-        {
-            int[] ar = array;
-            Array.Sort(ar);
-            return ar;
-        }
     }
 }
