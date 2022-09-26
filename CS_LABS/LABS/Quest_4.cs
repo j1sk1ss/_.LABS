@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CS_LABS.SUP_CLASSES;
 using Math = CS_LABS.SUP_CLASSES.Math;
 
@@ -9,6 +10,7 @@ public class Quest4
 {
     private readonly Math _math = new Math();
     private readonly Labs _labs = new Labs();
+    private readonly Arrays _arrays = new Arrays();
     public void Main()
     {
         var voids = new Action[2];
@@ -74,23 +76,26 @@ public class Quest4
     private readonly Random _random = new Random();
     private void Work_2()
     {
-        var nums = new Queue<int>(_random.Next() % 100);
-        for (var i = 0; i < nums.Count; i++) nums.Enqueue(_random.Next() % 100);
-            Console.WriteLine($"Uniq elements: {Elements(nums)}");
+        var capacity = _random.Next() % 100;
+        var nums = new Queue<int>(capacity);
+        for (var i = 0; i < capacity; i++) nums.Enqueue(_random.Next() % 100);
+            Console.WriteLine($"Uniq elements from {nums.Count} : {Elements(nums)}");
     }
 
     private string Elements(Queue<int> queue) // works incorrectly
     {
-        string elem = "";
-        for (int j = 0; j < queue.Count; j++)
+        var uniqNums = new int[1];
+        for (var j = 0; j < queue.Count; j++)
         {
-            int? el = queue.Peek();
-            for (int i = 0; i < queue.Count; i++) if (el == queue.Dequeue())
+            var thisNumber = queue.Dequeue();
+            for (var i = 0; i < uniqNums.Length; i++)
             {
-                el = null;
-            };
-            elem += " " + el;
+                if (uniqNums[i] == thisNumber) break;
+                if (i != uniqNums.Length - 1) continue;
+                    uniqNums = _arrays.ResizeArray(uniqNums, uniqNums.Length + 1);
+                    uniqNums[^1] = thisNumber;
+            }
         }
-        return elem;
+        return Arrays.PrintArray(uniqNums);
     }
 }

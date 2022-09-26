@@ -6,6 +6,12 @@ namespace CS_LABS.SUP_CLASSES;
 
 public class Arrays
 {
+    public int[] ResizeArray(int[] array, int newSize)
+    {
+        var newArray = new int[newSize];
+            for (var i = 0; i < array.Length; i++) newArray[i] = array[i];
+        return newArray;
+    }
     private readonly Random _random = new Random();
     public int[] FillArrayOfInts(int maxRand, int size)
     {
