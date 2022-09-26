@@ -13,12 +13,29 @@ public class Arrays
         for (var i = 0; i < ar.Length; i++) ar[i] = _random.Next() % maxRand;
         return ar;
     }
-
+    public int[,] FillDoubleArrayOfInts(int x, int y, int maxRand)
+    {
+        int[,] array = new int[x, y];
+        for (var i = 0; i < x; i++)
+        for (int j = 0; j < y; j++)
+            array[i, j] = _random.Next() % maxRand - 50;
+        return array;
+    }
+    public static string PrintDoubleArray(int[,] array)
+    {
+        var matrix = "";
+        for (var i = 0; i < array.GetLength(0); i++)
+        {
+            matrix += "\n";
+            for (var j = 0; j < array.GetLength(1); j++) matrix += array[i,j] + " ";
+        }
+        return matrix;
+    }
     public static string PrintArray(IEnumerable<int> array)
     {
         return array.Aggregate("", (current, t) => current + (" " + t));
     }
-    public int[] UniteArrays(int[] array1, int[] array2)
+    public static int[] UniteArrays(int[] array1, int[] array2)
     {
         var unary = new int[array1.Length + array2.Length];
         for (var i = 0; i < array1.Length; i++) unary[i] = array1[i];
@@ -39,5 +56,20 @@ public class Arrays
             }
         }
         return array;
+    }
+
+    public static string PrintLowerTriangle(int[,] matrix)
+    {
+        string triangle = "";
+        for (var i = 0; i < matrix.GetLength(0); i++)
+        {
+            triangle += "\n";
+            for (var j = 0; j < matrix.GetLength(1); j++)
+            {
+                if (j <= i) triangle += matrix[i, j] + " ";
+            }   
+        }
+
+        return triangle;
     }
 }

@@ -7,19 +7,17 @@ namespace CS_LABS
     public class Quest1
     {
         private readonly Math _math = new Math();
-        private readonly Dictionary<int, Action> _works = new Dictionary<int, Action>();
-        private void AddVoids()
-        {
-            _works.Add(1,Work_1);
-            _works.Add(2,Work_2);
-            _works.Add(3,Work_3);
-            _works.Add(4,Work_4);
-        }
+        private readonly Labs _labs = new Labs();
         public void Main()
         {
-            AddVoids();
-            Console.WriteLine("Type a number of work: ");
-            _works[_math.ToInt(Console.ReadLine())]();
+            var voids = new Action[4];
+                voids[0] = Work_1;
+                    voids[1] = Work_2;
+                    voids[2] = Work_3;
+                    voids[3] = Work_4;
+                _labs.AddVoids(voids);
+            Console.WriteLine("Choose a work number: ");
+            _labs.Works[_math.ToInt(Console.ReadLine())]();
         }
         private void Work_1()
         {
