@@ -28,6 +28,10 @@ namespace CS_LABS
                     var quest4 = new Quest4();
                     quest4.Main();
                     break;
+                case 5:
+                    var quest5 = new Quest5();
+                    quest5.Main();
+                    break;
                 default:
                     Console.WriteLine("Wrong number of Lab.");
                     break;
