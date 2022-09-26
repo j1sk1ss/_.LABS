@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using CS_LABS.SUP_CLASSES;
+using Math = CS_LABS.SUP_CLASSES.Math;
 
-namespace CS_LABS
+namespace CS_LABS.LABS
 {
     public class Quest1
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CS_LABS;
+namespace CS_LABS.SUP_CLASSES;
 
 public class Arrays
 {

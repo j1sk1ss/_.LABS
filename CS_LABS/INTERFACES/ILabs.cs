@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 
-namespace CS_LABS;
+namespace CS_LABS.INTERFACES;
 
 public interface ILabs
 {

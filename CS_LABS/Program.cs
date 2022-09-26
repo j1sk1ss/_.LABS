@@ -1,4 +1,6 @@
 ﻿using System;
+using CS_LABS.LABS;
+using Math = CS_LABS.SUP_CLASSES.Math;
 
 namespace CS_LABS
 {
@@ -21,6 +23,10 @@ namespace CS_LABS
                 case 3:
                     var quest3 = new Quest3();
                     quest3.Main();
+                    break;
+                case 4:
+                    var quest4 = new Quest4();
+                    quest4.Main();
                     break;
                 default:
                     Console.WriteLine("Wrong number of Lab.");

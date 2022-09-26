@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
+using CS_LABS.SUP_CLASSES;
+using Math = CS_LABS.SUP_CLASSES.Math;
 
-namespace CS_LABS
+namespace CS_LABS.LABS
 {
     public class Quest2
     {

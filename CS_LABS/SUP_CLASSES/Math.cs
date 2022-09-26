@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace CS_LABS
+namespace CS_LABS.SUP_CLASSES
 {
     public class Math
     {

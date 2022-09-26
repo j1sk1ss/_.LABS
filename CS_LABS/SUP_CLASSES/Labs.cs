@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using CS_LABS.INTERFACES;
 
-namespace CS_LABS;
+namespace CS_LABS.SUP_CLASSES;
 
 public class Labs : ILabs
 {
