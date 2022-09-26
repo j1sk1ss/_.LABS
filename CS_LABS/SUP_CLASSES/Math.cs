@@ -12,7 +12,7 @@ namespace CS_LABS.SUP_CLASSES
             }
             catch (FormatException e)
             {
-                Console.WriteLine("This char is not a integer number!");
+                Console.WriteLine($"This char is not a integer number! {e}");
                 throw;
             }
         }
@@ -25,7 +25,7 @@ namespace CS_LABS.SUP_CLASSES
             }
             catch (FormatException e)
             {
-                Console.WriteLine("This char is not a number!");
+                Console.WriteLine($"This char is not a number! {e}");
                 throw;
             }
         }
@@ -33,8 +33,8 @@ namespace CS_LABS.SUP_CLASSES
         {
             double? tmpC = System.Math.Pow(coordinates[0, 0] - coordinates[1, 0], 2) +
                            System.Math.Pow(coordinates[0, 1] - coordinates[1, 1], 2);
-            if (tmpC < System.Math.Pow(radius, 2)) return "Dot in this circle."; 
-            if (tmpC == System.Math.Pow(radius, 2)) return "Dot on the circle.";
+            if (tmpC < System.Math.Pow(radius, 2.0)) return "Dot in this circle."; 
+            if (tmpC == System.Math.Pow(radius, 2.0)) return "Dot on the circle.";
             return "Dot not in this circle.";
         }
     }
