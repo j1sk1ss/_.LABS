@@ -20,6 +20,33 @@ public class Quest4
 
     private static void Work_1()
     {
-        
+        Console.WriteLine("This work where u should write a line that all consist of ()[] symbols," +
+                          " after program will check correctness of this sequence: ");
+        var line = Console.ReadLine().ToCharArray(); // Work incorrectly
+            // ()((][(][])))
+            for (var i = 0; i < line.Length; i++)
+            {
+                if (line[i] == ']' || line[i] == ')')
+                {
+                    Console.WriteLine("The sequence is wrong. ");
+                    return;
+                }
+
+                char symbol = '0';
+                    switch (line[i])
+                    {
+                        case '(':
+                            symbol = ')';
+                            break;
+                        case '[':
+                            symbol = ']';
+                            break;
+                    }
+                for (var j = i; j < line.Length; j++)
+                {
+                    if (line[j] == symbol) line[j] = '0';
+                }
+            }
+            Console.WriteLine("The sequence is correct. ");
     }
 }
