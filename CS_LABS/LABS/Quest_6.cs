@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Text;
 using CS_LABS.SUP_CLASSES;
 
 namespace CS_LABS.LABS;
@@ -15,7 +17,20 @@ public class Quest6
         _labs.Works[_labs.Math.ToInt(Console.ReadLine())]();
     }
 
-    private void Work_1()
+    private static void Work_1()
+    {
+        Console.WriteLine("This work where part of text from file will deleted:");
+        
+        var tmp =File.ReadAllText(@"C:\Users\tghhs\RiderProjects\CS_LABS\CS_LABS\Test.txt", Encoding.UTF8);
+        Console.WriteLine(tmp);
+        var tmp2 = tmp.Substring(0, tmp.Length / 2);
+        using (var sw = new StreamWriter(@"C:\Users\tghhs\RiderProjects\CS_LABS\CS_LABS\Test.txt"))
+        {
+            sw.Write(tmp2);
+        }
+    }
+
+    private void Work_2()
     {
         
     }
