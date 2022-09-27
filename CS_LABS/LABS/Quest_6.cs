@@ -20,11 +20,11 @@ public class Quest6
     private static void Work_1()
     {
         Console.WriteLine("This work where part of text from file will deleted:");
-        
-        var tmp =File.ReadAllText(@"C:\Users\tghhs\RiderProjects\CS_LABS\CS_LABS\Test.txt", Encoding.UTF8);
+        var path = @"C:\Users\tghhs\RiderProjects\CS_LABS\CS_LABS\";
+        var tmp =File.ReadAllText($"{path}Test.txt", Encoding.UTF8);
         Console.WriteLine(tmp);
         var tmp2 = tmp.Substring(0, tmp.Length / 2);
-        using (var sw = new StreamWriter(@"C:\Users\tghhs\RiderProjects\CS_LABS\CS_LABS\Test.txt"))
+        using (var sw = new StreamWriter($"{path}Test.txt"))
         {
             sw.Write(tmp2);
         }
@@ -32,6 +32,6 @@ public class Quest6
         // Test
     private void Work_2()
     {
-
+        
     }
 }
