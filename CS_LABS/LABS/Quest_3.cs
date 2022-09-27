@@ -7,45 +7,33 @@ public class Quest3
     private readonly Labs _labs = new Labs();
     public void Main()
     {
-        var voids = new Action[3];
-            voids[0] = Work_1;
-            voids[1] = Work_2;
-            voids[2] = Work_3;
-            _labs.AddVoids(voids);
         Console.WriteLine("Choose a work number: ");
-        _labs.Works[_labs.Math.ToInt(Console.ReadLine())]();
+        new Quest3().GetType().GetMethod($"Work_{_labs.Math.ToInt(Console.ReadLine())}")?.Invoke(new Quest3(), null);
     }
-
-    private void Work_1()
+    public void Work_1() // Программа получает рандомно заполненую матрицу в диа от -50 до 50, после меняет отр. на 0, пол. на 1, и выводит нижний треугольник.
     {
         Console.WriteLine("This work where double dimension matrix will processed like -n -> 0; n -> 1; " +
                           "and will printed lower triangle. Set sizes: ");
-            var x = _labs.Math.ToInt(Console.ReadLine());
-            var y = _labs.Math.ToInt(Console.ReadLine());
-        var matrix = _labs.Arrays.FillDoubleArrayOfInts(x,y,100);
-            Console.WriteLine($"\nStart array is: {Arrays.PrintDoubleArray(matrix)}");
-            Console.WriteLine("\nProcessed array is:");
+        var matrix = _labs.Arrays.FillDoubleArrayOfInts(_labs.Math.ToInt(Console.ReadLine()),_labs.Math.ToInt(Console.ReadLine()),100);
+            Console.WriteLine($"\nStart array is: {Arrays.PrintDoubleArray(matrix)}\nProcessed array is:");
             for (var i = 0; i < matrix.GetLength(0); i++) for (var j = 0; j < matrix.GetLength(1); j++)
                 matrix[i, j] = (matrix[i, j] >= 0) switch
                 {
                     true => 1,
                     false => 0
                 };
-        Console.WriteLine(Arrays.PrintDoubleArray(matrix));
-        Console.WriteLine($"\nLower triangle is: \n {Arrays.PrintLowerTriangle(matrix)}");
+        Console.WriteLine($"{Arrays.PrintDoubleArray(matrix)}\nLower triangle is: \n {Arrays.PrintLowerTriangle(matrix)}");
     }
-
-    private static void Work_2()
+    public static void Work_2() // Программа считает кол-во символов до ; и после.
     {
-        Console.WriteLine("This work where u should write a string6 what includes ; char, and program will calculate " +
+        Console.WriteLine("This work where u should write a string what includes ; char, and program will calculate " +
                           "how much symbols before this char and how much after this char: ");
         var line = Console.ReadLine();
         if (line != null)
             Console.WriteLine(
                 $"Symbols before: {line.IndexOf(';')} , symbols after: {line.Length - line.IndexOf(';')}");
     }
-
-    private static void Work_3()
+    public static void Work_3() // Выводит процентное соотношение букв и других символов.
     {
         Console.WriteLine("This work where u should type a line of text and program will calculate percentage of " +
                           "letters and other symbols: ");

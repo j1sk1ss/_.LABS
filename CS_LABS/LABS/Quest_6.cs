@@ -10,17 +10,13 @@ public class Quest6
     private readonly Labs _labs = new Labs();
     public void Main()
     {
-        var voids = new Action[3];
-        voids[0] = Work_1;
-        voids[1] = Work_2;
-        voids[2] = Work_3;
-        _labs.AddVoids(voids);
         Console.WriteLine("Choose a work number: ");
-        _labs.Works[_labs.Math.ToInt(Console.ReadLine())]();
+        var q6 = new Quest6();
+        var m = q6.GetType().GetMethod($"Work_{_labs.Math.ToInt(Console.ReadLine())}")?.Invoke(q6, null);
     }
 
-    private const string Path = @"C:\Users\tghhs\RiderProjects\CS_LABS\CS_LABS\";
-    private static void Work_1()
+    private const string Path = @"C:\Users\tghhs\RiderProjects\CS_LABS\CS_LABS\FILES\";
+    public static void Work_1()
     {
         Console.WriteLine("This work where part of text from file will deleted:");
         var tmp = File.ReadAllText($"{Path}Test.txt", Encoding.UTF8);
@@ -28,7 +24,7 @@ public class Quest6
         using var sw = new StreamWriter($"{Path}Test.txt");
         sw.Write(tmp[..(tmp.Length / 2)]);
     }
-    private static void Work_2()
+    public static void Work_2()
     {
         Console.WriteLine("This work where program should separate dates and month to to different files: ");
         var days = "";
@@ -52,7 +48,7 @@ public class Quest6
              }
     }
 
-    private void Work_3()
+    public static void Work_3()
     {
         var matrixA = File.ReadAllText($"{Path}MatrixA.txt").Split("\n");
         var matrixB = File.ReadAllText($"{Path}MatrixB.txt").Split("\n");

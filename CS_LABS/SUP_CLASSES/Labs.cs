@@ -8,9 +8,6 @@ public class Labs : ILabs
 {
         public readonly Math Math = new Math();
         public readonly Arrays Arrays = new Arrays();
-    public readonly Dictionary<int, Action> Works = new Dictionary<int, Action>();
-    public void AddVoids(Action[] voids)
-    {
-        for (var i = 0; i < voids.Length; i++) Works.Add(i + 1,voids[i]);
-    }
+        public readonly Dictionary<int, Action> Works = new Dictionary<int, Action>();
+        public readonly Random Random = new Random();
 }

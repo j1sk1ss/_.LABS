@@ -10,16 +10,11 @@ namespace CS_LABS.LABS
         private readonly Labs _labs = new Labs();
         public void Main()
         {
-            var voids = new Action[4];
-                voids[0] = Work_1;
-                    voids[1] = Work_2;
-                    voids[2] = Work_3;
-                    voids[3] = Work_4;
-                _labs.AddVoids(voids);
             Console.WriteLine("Choose a work number: ");
-            _labs.Works[_math.ToInt(Console.ReadLine())]();
+            var q1 = new Quest1();
+            var m = q1.GetType().GetMethod($"Work_{_labs.Math.ToInt(Console.ReadLine())}")?.Invoke(q1, null);
         }
-        private void Work_1()
+        public void Work_1()
         {
             Console.WriteLine("This work where u should type a value of variable X:");
                 Console.WriteLine("X: ");
@@ -29,7 +24,7 @@ namespace CS_LABS.LABS
                           (1 / 12.0 * System.Math.Pow(x, 2) + 7 * x - 5));
         }
 
-        private void Work_2()
+        public void Work_2()
         {
             var cords = new double[2, 2];
             Console.WriteLine("This work where u should type a values of coordinates dot X, Y and circle X, Y and his radius:");
@@ -47,7 +42,7 @@ namespace CS_LABS.LABS
             Console.WriteLine(_math.CircleCheck(cords, r));
         }
 
-        private void Work_3()
+        public void Work_3()
         {
             Console.WriteLine("In this work u should type a year and he will be converted to old Japan format:");
                 int year = _math.ToInt(Console.ReadLine());
@@ -58,7 +53,7 @@ namespace CS_LABS.LABS
             if (year > 0) Console.WriteLine($"This year is called like {yearNames[year % 12]}.");
         }
 
-        private void Work_4()
+        public void Work_4()
         {
             Console.WriteLine("Type scholarship: ");
             var scholarship = _math.ToDouble(Console.ReadLine());

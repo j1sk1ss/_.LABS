@@ -5,25 +5,18 @@ namespace CS_LABS.LABS
 {
     public class Quest2
     {
-        private readonly Labs _labs = new Labs();
+        private readonly Labs _labs = new();
         public void Main()
         {
-            var voids = new Action[4];
-                    voids[0] = Work_1;
-                    voids[1] = Work_2;
-                    voids[2] = Work_3;
-                    voids[3] = Work_4;
-                _labs.AddVoids(voids);
             Console.WriteLine("Choose a work number: ");
-            _labs.Works[_labs.Math.ToInt(Console.ReadLine())]();
+            new Quest2().GetType().GetMethod($"Work_{_labs.Math.ToInt(Console.ReadLine())}")?.Invoke(new Quest2(), null);
         }
-
-        private void Work_1()
+        public void Work_1() // Есть последовательность, надо задать Е и кол-во элементов посл. а после выводится ответ мол сумма эл., модуль который выше Е.
         {
             Console.WriteLine("Write count of elements: ");
             var count = _labs.Math.ToInt(Console.ReadLine());
             Console.WriteLine("Write E in n >= E: ");
-            double e = _labs.Math.ToInt(Console.ReadLine());
+            var e = _labs.Math.ToDouble(Console.ReadLine());
                 double? answer = 0;
                 for (var i = 0; i < count; i++)
                 {
@@ -32,11 +25,10 @@ namespace CS_LABS.LABS
                 }
             Console.WriteLine($"{answer} is answer.");
         }
-
-        private void Work_2()
+        public void Work_2() // Задание заключается в том, что бы проверить все ли цифры в числе разные.
         {
-            Console.WriteLine("Read a number, what should be checked: ");
-            var number = _labs.Math.ToInt(Console.ReadLine()).ToString(); // Checks what char user write
+            Console.WriteLine("Read a number, what should be checked for uniq: ");
+            var number = _labs.Math.ToInt(Console.ReadLine()).ToString(); 
             var uniq = true;
                 for (var i = 0; i < number.Length; i++)
                 {
@@ -46,44 +38,29 @@ namespace CS_LABS.LABS
                 }
             if (uniq) Console.WriteLine("This number have all uniq numbers.");
         }
-
-        private void Work_3()
+        public void Work_3() // Задание в том, что бы из заданного массива получить минимальное число и максимальное, а после вывести их сумму. 
         {
             Console.WriteLine("Type a lenght of array that will be filed by random integer numbers: ");
-            var lenght = _labs.Math.ToInt(Console.ReadLine());
-            var array = _arrays.FillArrayOfInts(100, lenght);
-                int min = Int32.MaxValue, max = Int32.MinValue;
+            var array =  _labs.Arrays.FillArrayOfInts(100, _labs.Math.ToInt(Console.ReadLine()));
+                int min = int.MaxValue, max = int.MinValue;
                 Console.WriteLine($"Array is: {Arrays.PrintArray(array)}");
-                    for (var i = 0; i < lenght; i++)
-                    {
-                        switch (i % 2)
+                for (var i = 0; i < array.Length; i++)
+                        if (i % 2 == 0)
                         {
-                            case 0:
-                                if (min > array[i]) min = array[i];
-                                break;
-                            case 1:
-                                if (max < array[i]) max = array[i];
-                                break;
+                            if (min > array[i]) min = array[i];
                         }
-                    }
+                        else if (max < array[i]) max = array[i];
                 Console.WriteLine($"Array and answer is sum of {min} and {max} and this is {min + max}");
         }
-
-        private readonly Arrays _arrays = new Arrays();
-        private void Work_4()
+        public void Work_4() // Задание в том что бы после обьеденения последовательности числа так же были отсартированны.
         {
-            Console.WriteLine("This work where u should write sizes of arrays: ");
-                Console.WriteLine("First array: ");
-                var size1 = _labs.Math.ToInt(Console.ReadLine());
-                    var array1 = _arrays.FillArrayOfInts(100, size1);
-                    Console.WriteLine($"Array is {Arrays.PrintArray(array1)}");
-                    Console.WriteLine($"Sorted array is {Arrays.PrintArray(Arrays.Sort(array1))}");
-                Console.WriteLine("Second array: ");
-                var size2 = _labs.Math.ToInt(Console.ReadLine());
-                    var array2 = _arrays.FillArrayOfInts(100, size2);
-                    Console.WriteLine($"Array is {Arrays.PrintArray(array2)}");
-                    Console.WriteLine($"Sorted array is {Arrays.PrintArray(Arrays.Sort(array2))}"); 
-            Console.WriteLine($"United array is: {Arrays.PrintArray(Arrays.Sort(Arrays.UniteArrays(array1,array2)))}");
+            Console.WriteLine("This work where u should write sizes of arrays: \n First array: ");
+            var array1 = _labs.Arrays.FillArrayOfInts(100, _labs.Math.ToInt(Console.ReadLine()));
+                    Console.WriteLine($"Array is {Arrays.PrintArray(array1)} \n Sorted array is {Arrays.PrintArray(Arrays.Sort(array1))} \n Second array:");
+                    var array2 =  _labs.Arrays.FillArrayOfInts(100, _labs.Math.ToInt(Console.ReadLine()));
+                    Console.WriteLine($"Array is {Arrays.PrintArray(array2)} \n Sorted array is {Arrays.PrintArray(Arrays.Sort(array2))}\nUnited array is:" +
+                                      $" {Arrays.PrintArray(Arrays.Sort(Arrays.UniteArrays(array1,array2)))}");
+
         }
     }
 }

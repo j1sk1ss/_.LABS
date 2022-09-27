@@ -8,14 +8,12 @@ public class Quest7
     private readonly Labs _labs = new Labs();
     public void Main()
     {
-        var voids = new Action[2];
-        voids[0] = Work_1;
-        _labs.AddVoids(voids);
         Console.WriteLine("Choose a work number: ");
-        _labs.Works[_labs.Math.ToInt(Console.ReadLine())]();
+        var q7 = new Quest7();
+        var m = q7.GetType().GetMethod($"Work_{_labs.Math.ToInt(Console.ReadLine())}")?.Invoke(q7, null);
     }
 
-    private void Work_1()
+    public void Work_1()
     {
         
     }

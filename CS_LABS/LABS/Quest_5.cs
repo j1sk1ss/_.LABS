@@ -9,17 +9,14 @@ public class Quest5
     private readonly Labs _labs = new Labs();
     public void Main()
     {
-        var voids = new Action[2];
-        voids[0] = Work_1;
-        voids[1] = Work_2;
-        _labs.AddVoids(voids);
         Console.WriteLine("Choose a work number: ");
-        _labs.Works[_labs.Math.ToInt(Console.ReadLine())]();
+        var q5 = new Quest5();
+        var m = q5.GetType().GetMethod($"Work_{_labs.Math.ToInt(Console.ReadLine())}")?.Invoke(q5, null);
     }
 
     private readonly Dictionary<string,string> _dictionary = new Dictionary<string, string>();
     
-    private void Work_1()
+    public void Work_1()
     {
         _dictionary.Add("привет", "hello");
         _dictionary.Add("как", "how");
@@ -50,7 +47,7 @@ public class Quest5
         return arrayText.Aggregate(translate, (current, t) => current + (disct[t.ToLower()] + " "));
     }
 
-    private static void Work_2()
+    public static void Work_2()
     {
         var word = new HashSet<char>();
         Console.WriteLine("This work where u should type a word and program will show count of uniq letters: ");
