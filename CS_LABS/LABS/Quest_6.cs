@@ -29,17 +29,9 @@ public class Quest6
             sw.Write(tmp2);
         }
     }
-
+        // Test
     private void Work_2()
     {
-        Console.WriteLine("This work where part of text from file will deleted:"); 
 
-        var tmp =File.ReadAllText(@"C:\Users\tghhs\RiderProjects\CS_LABS\CS_LABS\Test.txt", Encoding.UTF8); 
-        Console.WriteLine(tmp); 
-        var tmp2 = tmp.Substring(0, tmp.Length / 2); 
-        using (var sw = new StreamWriter(@"C:\Users\tghhs\RiderProjects\CS_LABS\CS_LABS\Test.txt")) 
-        { 
-            sw.Write(tmp2); 
-        }
     }
 }
