@@ -41,6 +41,7 @@ namespace CS_LABS.LABS
                     cords[i, j] = _math.ToDouble(Console.ReadLine());
                 }
             }
+            
             Console.WriteLine("Circle radius: ");
                 double r = _math.ToInt(Console.ReadLine());
             Console.WriteLine(_math.CircleCheck(cords, r));
