@@ -8,9 +8,7 @@ namespace CS_LABS.LABS;
 
 public class Quest4
 {
-    private readonly Math _math = new Math();
     private readonly Labs _labs = new Labs();
-    private readonly Arrays _arrays = new Arrays();
     public void Main()
     {
         var voids = new Action[2];
@@ -18,7 +16,7 @@ public class Quest4
         voids[1] = Work_2;
         _labs.AddVoids(voids);
         Console.WriteLine("Choose a work number: ");
-        _labs.Works[_math.ToInt(Console.ReadLine())]();
+        _labs.Works[_labs.Math.ToInt(Console.ReadLine())]();
     }
 
     private static void Work_1()
@@ -82,7 +80,7 @@ public class Quest4
             Console.WriteLine($"Uniq elements from {nums.Count} : {Elements(nums)}");
     }
 
-    private string Elements(Queue<int> queue) // works incorrectly
+    private string Elements(Queue<int> queue) 
     {
         var uniqNums = new int[1];
         for (var j = 0; j < queue.Count; j++)
@@ -92,7 +90,7 @@ public class Quest4
             {
                 if (uniqNums[i] == thisNumber) break;
                 if (i != uniqNums.Length - 1) continue;
-                    uniqNums = _arrays.ResizeArray(uniqNums, uniqNums.Length + 1);
+                    uniqNums = _labs.Arrays.ResizeArray(uniqNums, uniqNums.Length + 1);
                     uniqNums[^1] = thisNumber;
             }
         }

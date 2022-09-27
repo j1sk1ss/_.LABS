@@ -2,71 +2,63 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CS_LABS.SUP_CLASSES;
-using Microsoft.VisualBasic;
-using Math = CS_LABS.SUP_CLASSES.Math;
-
 namespace CS_LABS.LABS;
 
 public class Quest5
 {
-    private readonly Math _math = new Math();
     private readonly Labs _labs = new Labs();
-    private readonly Arrays _arrays = new Arrays();
-    private readonly Enum _language;
-
     public void Main()
     {
         var voids = new Action[2];
         voids[0] = Work_1;
+        voids[1] = Work_2;
         _labs.AddVoids(voids);
         Console.WriteLine("Choose a work number: ");
-        _labs.Works[_math.ToInt(Console.ReadLine())]();
+        _labs.Works[_labs.Math.ToInt(Console.ReadLine())]();
     }
 
     private readonly Dictionary<string,string> _dictionary = new Dictionary<string, string>();
+    
     private void Work_1()
     {
+        _dictionary.Add("привет", "hello");
+        _dictionary.Add("как", "how");
+        _dictionary.Add("я", "i");
+        _dictionary.Add("пока", "bye");
         Console.WriteLine("This program will save translate to english from russian and reverse type of this: ");
-        Console.WriteLine("Translate from russian to english (1)");
-        Console.WriteLine("Translate from english to russian (2)");
-            _dictionary.Add("привет", "hello");
-            _dictionary.Add("как", "how");
-            _dictionary.Add("я", "i");
-            _dictionary.Add("пока", "bye");
-            switch (_math.ToInt(Console.ReadLine()))
+            Console.WriteLine("Translate from russian to english (1)");
+            Console.WriteLine("Translate from english to russian (2)");
+            switch (_labs.Math.ToInt(Console.ReadLine()))
             {
                 case 1:
-                    Console.WriteLine(Translate(Language.English, Console.ReadLine()));
+                    Console.WriteLine(Translate(_dictionary,Console.ReadLine()));
                     break;
                 case 2:
-                    Translate(Language.Russian, Console.ReadLine());
+                    var newDictionary = _dictionary.ToDictionary(x => x.Value, x => x.Key);
+                    Console.WriteLine(Translate(newDictionary,Console.ReadLine()));
                     break;
                 default:
+                    Console.WriteLine("Cannot translate this text.");
                     break;
             }
     }
     
-    private string Translate(Language lng, string text)
+    private static string Translate(IReadOnlyDictionary<string, string> disct, string text)
     {
         var arrayText = text.Split(" ");
-        var translate = "";
-        switch (lng)
-        {
-            case Language.English:
-                translate = arrayText.Aggregate(translate, (current, t) => current + (_dictionary[t.ToLower()] + " "));
-                break;
-            case Language.Russian:
-                
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(lng), lng, null);
-        }
-        return translate;
+            const string translate = "";
+        return arrayText.Aggregate(translate, (current, t) => current + (disct[t.ToLower()] + " "));
     }
 
-    private enum Language
+    private static void Work_2()
     {
-        Russian,
-        English
-    }    
+        var word = new HashSet<char>();
+        Console.WriteLine("This work where u should type a word and program will show count of uniq letters: ");
+        var tmp = Console.ReadLine();
+        if (tmp != null)
+            foreach (var t in tmp)
+                word.Add(t);
+
+        Console.WriteLine($"The count of uniq letters is: {word.Count}");
+    }
 }

@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Linq;
 using CS_LABS.SUP_CLASSES;
-using Math = CS_LABS.SUP_CLASSES.Math;
-
 namespace CS_LABS.LABS
 {
     public class Quest2
     {
-        private readonly Math _math = new Math();
         private readonly Labs _labs = new Labs();
         public void Main()
         {
@@ -18,15 +15,15 @@ namespace CS_LABS.LABS
                     voids[3] = Work_4;
                 _labs.AddVoids(voids);
             Console.WriteLine("Choose a work number: ");
-            _labs.Works[_math.ToInt(Console.ReadLine())]();
+            _labs.Works[_labs.Math.ToInt(Console.ReadLine())]();
         }
 
         private void Work_1()
         {
             Console.WriteLine("Write count of elements: ");
-            var count = _math.ToInt(Console.ReadLine());
+            var count = _labs.Math.ToInt(Console.ReadLine());
             Console.WriteLine("Write E in n >= E: ");
-            double e = _math.ToInt(Console.ReadLine());
+            double e = _labs.Math.ToInt(Console.ReadLine());
                 double? answer = 0;
                 for (var i = 0; i < count; i++)
                 {
@@ -39,7 +36,7 @@ namespace CS_LABS.LABS
         private void Work_2()
         {
             Console.WriteLine("Read a number, what should be checked: ");
-            var number = _math.ToInt(Console.ReadLine()).ToString(); // Checks what char user write
+            var number = _labs.Math.ToInt(Console.ReadLine()).ToString(); // Checks what char user write
             var uniq = true;
                 for (var i = 0; i < number.Length; i++)
                 {
@@ -53,7 +50,7 @@ namespace CS_LABS.LABS
         private void Work_3()
         {
             Console.WriteLine("Type a lenght of array that will be filed by random integer numbers: ");
-            var lenght = _math.ToInt(Console.ReadLine());
+            var lenght = _labs.Math.ToInt(Console.ReadLine());
             var array = _arrays.FillArrayOfInts(100, lenght);
                 int min = Int32.MaxValue, max = Int32.MinValue;
                 Console.WriteLine($"Array is: {Arrays.PrintArray(array)}");
@@ -77,12 +74,12 @@ namespace CS_LABS.LABS
         {
             Console.WriteLine("This work where u should write sizes of arrays: ");
                 Console.WriteLine("First array: ");
-                var size1 = _math.ToInt(Console.ReadLine());
+                var size1 = _labs.Math.ToInt(Console.ReadLine());
                     var array1 = _arrays.FillArrayOfInts(100, size1);
                     Console.WriteLine($"Array is {Arrays.PrintArray(array1)}");
                     Console.WriteLine($"Sorted array is {Arrays.PrintArray(Arrays.Sort(array1))}");
                 Console.WriteLine("Second array: ");
-                var size2 = _math.ToInt(Console.ReadLine());
+                var size2 = _labs.Math.ToInt(Console.ReadLine());
                     var array2 = _arrays.FillArrayOfInts(100, size2);
                     Console.WriteLine($"Array is {Arrays.PrintArray(array2)}");
                     Console.WriteLine($"Sorted array is {Arrays.PrintArray(Arrays.Sort(array2))}"); 

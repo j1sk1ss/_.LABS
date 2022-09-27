@@ -6,6 +6,8 @@ namespace CS_LABS.SUP_CLASSES;
 
 public class Labs : ILabs
 {
+        public readonly Math Math = new Math();
+        public readonly Arrays Arrays = new Arrays();
     public readonly Dictionary<int, Action> Works = new Dictionary<int, Action>();
     public void AddVoids(Action[] voids)
     {
