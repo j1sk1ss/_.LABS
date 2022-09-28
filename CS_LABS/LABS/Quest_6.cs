@@ -32,11 +32,8 @@ public class Quest6
              var tmp = (File.ReadAllText($"{Path}Dates.txt", Encoding.UTF8)).Split(" ");
              foreach (var t in tmp)
              {
-                 days += t[0].ToString();
-                 days += t[1].ToString() + " ";
-
-                 month += t[3].ToString();
-                 month += t[4].ToString() + " ";
+                 days += t[0].ToString() + t[1] + " ";
+                 month += t[3].ToString() + t[4] + " ";
              }
              using (var sw = new StreamWriter($"{Path}Days.txt"))
              {

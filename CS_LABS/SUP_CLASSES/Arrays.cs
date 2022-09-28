@@ -6,7 +6,7 @@ namespace CS_LABS.SUP_CLASSES;
 
 public class Arrays
 {
-    public int[] ResizeArray(int[] array, int newSize)
+    public static int[] ResizeArray(int[] array, int newSize)
     {
         var newArray = new int[newSize];
             for (var i = 0; i < array.Length; i++) newArray[i] = array[i];
@@ -21,9 +21,9 @@ public class Arrays
     }
     public int[,] FillDoubleArrayOfInts(int x, int y, int maxRand)
     {
-        int[,] array = new int[x, y];
+        var array = new int[x, y];
         for (var i = 0; i < x; i++)
-        for (int j = 0; j < y; j++)
+        for (var j = 0; j < y; j++)
             array[i, j] = _random.Next() % maxRand - 50;
         return array;
     }
@@ -44,8 +44,8 @@ public class Arrays
     public static int[] UniteArrays(int[] array1, int[] array2)
     {
         var unary = new int[array1.Length + array2.Length];
-        for (var i = 0; i < array1.Length; i++) unary[i] = array1[i];
-        for (var i = array1.Length; i < array1.Length + array2.Length; i++) unary[i] = array2[i - array1.Length];
+            for (var i = 0; i < array1.Length; i++) unary[i] = array1[i];
+                for (var i = array1.Length; i < array1.Length + array2.Length; i++) unary[i] = array2[i - array1.Length];
         return unary;
     }
     public static IEnumerable<int> Sort(int[] array)
@@ -66,7 +66,7 @@ public class Arrays
 
     public static string PrintLowerTriangle(int[,] matrix)
     {
-        string triangle = "";
+        var triangle = "";
         for (var i = 0; i < matrix.GetLength(0); i++)
         {
             triangle += "\n";
