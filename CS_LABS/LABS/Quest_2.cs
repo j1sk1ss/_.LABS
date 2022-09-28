@@ -12,17 +12,15 @@ namespace CS_LABS.LABS
         }
         public void Work_1() // Есть последовательность, надо задать Е и кол-во элементов посл. а после выводится ответ мол сумма эл., модуль который выше Е.
         {
-            Console.WriteLine("Write count of elements: "); // поиск суммы элементов которые больщше е
-            var count = Math.ToInt(Console.ReadLine());
-                Console.WriteLine("Write E in n >= E: ");
+            Console.WriteLine("Write E in n >= E: ");
                     var e = Math.ToDouble(Console.ReadLine());
-            double? answer = 0;
-                for (var i = 0; i < count; i++)
-                {
-                    var number = System.Math.Pow(-1, i - 1) / System.Math.Pow(i, i);
-                    if (System.Math.Abs(number) >= e) answer += number;
-                }
-            Console.WriteLine($"{answer} is answer.");
+            var answer = 0.0;
+            var i = 0.0;
+            while (answer < e)
+            {
+                answer += System.Math.Abs(System.Math.Pow(-1.0, i - 1.0) / System.Math.Pow(i, i)); i += 1.0;
+            }
+            Console.WriteLine($"{answer} is higher then E and the count of elements is {i}.");
         }
         public void Work_2() // Задание заключается в том, что бы проверить все ли цифры в числе разные.
         {
@@ -34,10 +32,10 @@ namespace CS_LABS.LABS
         }
         public void Work_3() // Задание в том, что бы из заданного массива получить минимальное число и максимальное, а после вывести их сумму. 
         {
-            Console.WriteLine("Type a lenght of array that will be filed by random integer numbers: "); // double
-            var array = Arrays.FillArrayOfInts(100, Math.ToInt(Console.ReadLine()));
-                int min = int.MaxValue, max = int.MinValue;
-                Console.WriteLine($"Array is: {Arrays.PrintArray(array)}");
+            Console.WriteLine("Type a lenght of array that will be filed by random integer numbers: "); 
+            var array = Arrays.FillArrayOfDoubles(100, Math.ToInt(Console.ReadLine()));
+                double min = double.MaxValue, max = double.MinValue;
+                Console.WriteLine($"Array is: {Arrays.PrintDoubleArray(array)}");
             for (var i = 0; i < array.Length; i++)
                 if (i % 2 == 0) {if (min > array[i]) min = array[i];}
                     else if (max < array[i]) max = array[i];
@@ -51,7 +49,7 @@ namespace CS_LABS.LABS
                 $"Array is {Arrays.PrintArray(array1)} \nSorted array is {Arrays.PrintArray(Arrays.Sort(array1))} \nSecond array:");
                     var array2 = Arrays.FillArrayOfInts(100, Math.ToInt(Console.ReadLine()));
             Console.WriteLine($"Array is {Arrays.PrintArray(array2)} \nSorted array is {Arrays.PrintArray(Arrays.Sort(array2))}\nUnited array is:" +
-                              $" {Arrays.PrintArray(Arrays.Sort(Arrays.UniteArrays(array1, array2)))}");
+                              $" {Arrays.PrintArray(Arrays.UniteArrays(array1, array2))}");
         }
     }
 }

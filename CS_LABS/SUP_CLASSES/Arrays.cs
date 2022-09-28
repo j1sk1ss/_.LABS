@@ -19,6 +19,12 @@ public class Arrays
         for (var i = 0; i < ar.Length; i++) ar[i] = _random.Next() % maxRand;
         return ar;
     }
+    public double[] FillArrayOfDoubles(double maxRand, int size)
+    {
+        var ar = new double[size];
+        for (var i = 0; i < ar.Length; i++) ar[i] = _random.NextDouble() % maxRand;
+        return ar;
+    }
     public int[,] FillDoubleArrayOfInts(int x, int y, int maxRand)
     {
         var array = new int[x, y];
@@ -41,12 +47,13 @@ public class Arrays
     {
         return array.Aggregate("", (current, t) => current + (" " + t));
     }
-    public static int[] UniteArrays(int[] array1, int[] array2)
+    public static string PrintDoubleArray(IEnumerable<double> array)
     {
-        var unary = new int[array1.Length + array2.Length];
-            for (var i = 0; i < array1.Length; i++) unary[i] = array1[i];
-                for (var i = array1.Length; i < array1.Length + array2.Length; i++) unary[i] = array2[i - array1.Length];
-        return unary;
+        return array.Aggregate("", (current, t) => current + (" " + t));
+    }
+    public static int[] UniteArrays(IEnumerable<int> array1, IEnumerable<int> array2)
+    {
+        return array1.Concat(array2).ToArray();
     }
     public static IEnumerable<int> Sort(int[] array)
     {
