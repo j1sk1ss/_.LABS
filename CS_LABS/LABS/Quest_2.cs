@@ -15,12 +15,14 @@ namespace CS_LABS.LABS
             Console.WriteLine("Write E in n >= E: ");
                     var e = Math.ToDouble(Console.ReadLine());
             var answer = 0.0;
-            var i = 0.0;
-            while (answer < e)
+            var i = 1.0;
+            var thisNum = i % 2 == 0 ? 1 : -1 / System.Math.Pow(i, i);
+            while (System.Math.Abs(thisNum) > e)
             {
-                answer += System.Math.Abs(System.Math.Pow(-1.0, i - 1.0) / System.Math.Pow(i, i)); i += 1.0;
+                answer += thisNum; i += 1.0;
+                thisNum = i % 2 == 0 ? 1 : -1 / System.Math.Pow(i, i);
             }
-            Console.WriteLine($"{answer} is higher then E and the count of elements is {i}.");
+            Console.WriteLine($"{answer} is sum of elements higher then E and the count of this elements is {i}.");
         }
         public void Work_2() // Задание заключается в том, что бы проверить все ли цифры в числе разные.
         {
@@ -43,7 +45,7 @@ namespace CS_LABS.LABS
         }
         public void Work_4() // Задание в том что бы после обьеденения последовательности числа так же были отсартированны.
         {
-            Console.WriteLine("This work where u should write sizes of arrays: \nFirst array: "); // слияние
+            Console.WriteLine("This work where u should write sizes of arrays: \nFirst array: "); 
                 var array1 = Arrays.FillArrayOfInts(100, Math.ToInt(Console.ReadLine()));
             Console.WriteLine(
                 $"Array is {Arrays.PrintArray(array1)} \nSorted array is {Arrays.PrintArray(Arrays.Sort(array1))} \nSecond array:");

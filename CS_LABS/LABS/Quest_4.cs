@@ -56,20 +56,21 @@ public class Quest4 : Labs
         for (var i = 0; i < capacity; i++) nums.Enqueue(Random.Next() % 100);
             Console.WriteLine($"Uniq elements from {nums.Count} : {Elements(nums)}");
     }
-    private static string Elements(Queue<int> queue) 
+    private static string Elements(Queue<int> queue)
     {
-        var uniqNums = new int[1];
-        for (var j = 0; j < queue.Count; j++) // queue крутить типо выташил и обратно положил 
+        var uniq = 0;
+        for (var j = 0; j < queue.Count; j++) 
         {
             var thisNumber = queue.Dequeue();
-            for (var i = 0; i < uniqNums.Length; i++)
+            queue.Enqueue(thisNumber);
+            for (var i = 0; i < queue.Count; i++)
             {
-                if (uniqNums[i] == thisNumber) break;
-                if (i != uniqNums.Length - 1) continue;
-                    uniqNums = Arrays.ResizeArray(uniqNums, uniqNums.Length + 1);
-                    uniqNums[^1] = thisNumber;
+                var thisnumber = queue.Dequeue();
+                if (thisnumber == thisNumber) break;
+                if (i == queue.Count - 1) uniq++;
+                queue.Enqueue(thisnumber);
             }
         }
-        return Arrays.PrintArray(uniqNums);
+        return $"Queue have {uniq} uniq elements.";
     }
 }

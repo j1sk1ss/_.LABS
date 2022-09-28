@@ -8,11 +8,9 @@ public class Quest6 : Labs
     public void Main()
     {
         Console.WriteLine("Choose a work number: ");
-        var q6 = new Quest6();
-        var m = q6.GetType().GetMethod($"Work_{Math.ToInt(Console.ReadLine())}")?.Invoke(q6, null);
+        new Quest6().GetType().GetMethod($"Work_{Math.ToInt(Console.ReadLine())}")?.Invoke(new Quest6(), null);
     }
-
-    private const string Path = @"C:\Users\tghhs\RiderProjects\CS_LABS\CS_LABS\FILES\";
+    private const string Path = @"C:\Users\j1sk1ss\RiderProjects\CS_LABS\CS_LABS\FILES\";
     public static void Work_1()
     {
         Console.WriteLine("This work where part of text from file will deleted:");
@@ -48,8 +46,9 @@ public class Quest6 : Labs
 
     public static void Work_3()
     {
+        var mt1 = new int[0,0];
+        var mt2 = new int[0,0];
         var matrixA = File.ReadAllText($"{Path}MatrixA.txt").Split("\n").ToString()?.Split(" ");
         var matrixB = File.ReadAllText($"{Path}MatrixB.txt").Split("\n").ToString()?.Split(" ");
-            
     }
 }

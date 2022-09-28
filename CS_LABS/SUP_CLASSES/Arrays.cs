@@ -51,9 +51,16 @@ public class Arrays
     {
         return array.Aggregate("", (current, t) => current + (" " + t));
     }
-    public static int[] UniteArrays(IEnumerable<int> array1, IEnumerable<int> array2)
+    public static IEnumerable<int> UniteArrays(int[] array1, int[] array2)
     {
-        return array1.Concat(array2).ToArray();
+        var ar = new int[array1.Length + array2.Length];
+        int a = 0, b = 0, i = 0;
+        while (a < array1.Length && b < array2.Length)
+            if (array1[a] < array2[b]) ar[i++] = array1[a++];
+                else ar[i++] = array2[b++];
+        while (a < array1.Length) ar[i++] = array1[a++];
+        while (b < array2.Length) ar[i++] = array2[b++];
+        return ar;
     }
     public static IEnumerable<int> Sort(int[] array)
     {
@@ -82,7 +89,6 @@ public class Arrays
                 if (j <= i) triangle += matrix[i, j] + " ";
             }   
         }
-
         return triangle;
     }
 }

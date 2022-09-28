@@ -14,14 +14,16 @@ public class Quest5
         var m = q5.GetType().GetMethod($"Work_{_labs.Math.ToInt(Console.ReadLine())}")?.Invoke(q5, null);
     }
 
-    private readonly Dictionary<string,string> _dictionary = new Dictionary<string, string>();
+    private readonly Dictionary<string, string> _dictionary = new()
+    {
+        {"привет", "hello"},
+        {"как", "how"},
+        {"я", "i"},
+        {"пока", "bye"}
+    };
     
     public void Work_1()
     {
-        _dictionary.Add("привет", "hello");
-        _dictionary.Add("как", "how");
-        _dictionary.Add("я", "i");
-        _dictionary.Add("пока", "bye");
         Console.WriteLine("This program will save translate to english from russian and reverse type of this: ");
             Console.WriteLine("Translate from russian to english (1)");
             Console.WriteLine("Translate from english to russian (2)");
@@ -49,13 +51,11 @@ public class Quest5
 
     public static void Work_2()
     {
-        var word = new HashSet<char>();
         Console.WriteLine("This work where u should type a word and program will show count of uniq letters: ");
         var tmp = Console.ReadLine()?.ToHashSet();
-        if (tmp != null)
-            foreach (var t in tmp)
-                word.Add(t);
-
-        Console.WriteLine($"The count of uniq letters is: {word.Count}");
+        if (tmp == null) return;
+        foreach (var t in tmp)
+            tmp.Add(t);
+        Console.WriteLine($"The count of uniq letters is: {tmp.Count}");
     }
 }
