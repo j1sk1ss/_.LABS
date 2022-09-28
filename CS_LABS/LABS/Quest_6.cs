@@ -20,9 +20,10 @@ public class Quest6
     {
         Console.WriteLine("This work where part of text from file will deleted:");
         var tmp = File.ReadAllText($"{Path}Test.txt", Encoding.UTF8).Split(" ");
-        Console.WriteLine(tmp);
         using var sw = new StreamWriter($"{Path}Test.txt");
-        sw.Write(tmp[..(tmp.Length / 2)] + " ");
+        var end = "";
+        for (int i = 0; i < tmp.Length / 2; i++) end += tmp[i] + " ";
+        sw.Write(end);
     }
     public static void Work_2()
     {
