@@ -12,7 +12,7 @@ namespace CS_LABS.LABS
         }
         public void Work_1() // Есть последовательность, надо задать Е и кол-во элементов посл. а после выводится ответ мол сумма эл., модуль который выше Е.
         {
-            Console.WriteLine("Write count of elements: ");
+            Console.WriteLine("Write count of elements: "); // поиск суммы элементов которые больщше е
             var count = Math.ToInt(Console.ReadLine());
                 Console.WriteLine("Write E in n >= E: ");
                     var e = Math.ToDouble(Console.ReadLine());
@@ -34,7 +34,7 @@ namespace CS_LABS.LABS
         }
         public void Work_3() // Задание в том, что бы из заданного массива получить минимальное число и максимальное, а после вывести их сумму. 
         {
-            Console.WriteLine("Type a lenght of array that will be filed by random integer numbers: ");
+            Console.WriteLine("Type a lenght of array that will be filed by random integer numbers: "); // double
             var array = Arrays.FillArrayOfInts(100, Math.ToInt(Console.ReadLine()));
                 int min = int.MaxValue, max = int.MinValue;
                 Console.WriteLine($"Array is: {Arrays.PrintArray(array)}");
@@ -45,7 +45,7 @@ namespace CS_LABS.LABS
         }
         public void Work_4() // Задание в том что бы после обьеденения последовательности числа так же были отсартированны.
         {
-            Console.WriteLine("This work where u should write sizes of arrays: \nFirst array: ");
+            Console.WriteLine("This work where u should write sizes of arrays: \nFirst array: "); // слияние
                 var array1 = Arrays.FillArrayOfInts(100, Math.ToInt(Console.ReadLine()));
             Console.WriteLine(
                 $"Array is {Arrays.PrintArray(array1)} \nSorted array is {Arrays.PrintArray(Arrays.Sort(array1))} \nSecond array:");

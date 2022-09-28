@@ -51,7 +51,7 @@ public class Quest5
     {
         var word = new HashSet<char>();
         Console.WriteLine("This work where u should type a word and program will show count of uniq letters: ");
-        var tmp = Console.ReadLine();
+        var tmp = Console.ReadLine()?.ToHashSet();
         if (tmp != null)
             foreach (var t in tmp)
                 word.Add(t);

@@ -15,12 +15,9 @@ public class Quest3 : Labs
                           "and will printed lower triangle. Set sizes: ");
         var matrix = Arrays.FillDoubleArrayOfInts(Math.ToInt(Console.ReadLine()),Math.ToInt(Console.ReadLine()),100);
             Console.WriteLine($"\nStart matrix is: {Arrays.PrintDoubleArray(matrix)}\nProcessed matrix is:");
-            for (var i = 0; i < matrix.GetLength(0); i++) for (var j = 0; j < matrix.GetLength(1); j++)
-                matrix[i, j] = (matrix[i, j] >= 0) switch
-                {
-                    true => 1,
-                    false => 0
-                };
+            for (var i = 0; i < matrix.GetLength(0); i++)
+            for (var j = 0; j < matrix.GetLength(1); j++) 
+                matrix[i,j] = matrix[i, j] >= 0 ? 1 : 0;
         Console.WriteLine($"{Arrays.PrintDoubleArray(matrix)}\nLower triangle is: \n {Arrays.PrintLowerTriangle(matrix)}");
     }
     public static void Work_2() // Программа считает кол-во символов до ; и после.

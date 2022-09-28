@@ -17,7 +17,7 @@ public class Quest4 : Labs
         var bracketLine = new Stack<char>(Console.ReadLine()?.ToCharArray() ?? Array.Empty<char>());
         var opened = new int[2]; // 0 - () ; 1 - [] ;
             var lenght = bracketLine.Count;
-                    for (var i = 0; i < lenght; i++)
+                    for (var i = 0; i < lenght; i++) // в -> стек
                     {
                         var now = bracketLine.Pop();
                         if (i < lenght - 1) if (Check(now, bracketLine.Peek())) { opened[0] = -100; break; }
@@ -59,7 +59,7 @@ public class Quest4 : Labs
     private static string Elements(Queue<int> queue) 
     {
         var uniqNums = new int[1];
-        for (var j = 0; j < queue.Count; j++)
+        for (var j = 0; j < queue.Count; j++) // queue крутить типо выташил и обратно положил 
         {
             var thisNumber = queue.Dequeue();
             for (var i = 0; i < uniqNums.Length; i++)

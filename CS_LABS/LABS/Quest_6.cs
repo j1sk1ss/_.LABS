@@ -19,10 +19,10 @@ public class Quest6
     public static void Work_1()
     {
         Console.WriteLine("This work where part of text from file will deleted:");
-        var tmp = File.ReadAllText($"{Path}Test.txt", Encoding.UTF8);
+        var tmp = File.ReadAllText($"{Path}Test.txt", Encoding.UTF8).Split(" ");
         Console.WriteLine(tmp);
         using var sw = new StreamWriter($"{Path}Test.txt");
-        sw.Write(tmp[..(tmp.Length / 2)]);
+        sw.Write(tmp[..(tmp.Length / 2)] + " ");
     }
     public static void Work_2()
     {
@@ -32,8 +32,8 @@ public class Quest6
              var tmp = (File.ReadAllText($"{Path}Dates.txt", Encoding.UTF8)).Split(" ");
              foreach (var t in tmp)
              {
-                 days += t[0].ToString() + t[1] + " ";
-                 month += t[3].ToString() + t[4] + " ";
+                 days += t[0..2] + " ";
+                 month += t[3..5] + " ";
              }
              using (var sw = new StreamWriter($"{Path}Days.txt"))
              {
