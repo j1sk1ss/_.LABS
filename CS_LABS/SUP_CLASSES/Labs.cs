@@ -5,7 +5,7 @@ namespace CS_LABS.SUP_CLASSES;
 public class Labs : ILabs
 {
         public readonly Math Math = new Math();
-        public readonly Arrays Arrays = new Arrays();
+        protected readonly Arrays Arrays = new Arrays();
         public readonly Dictionary<int, Action> Works = new Dictionary<int, Action>();
-        public readonly Random Random = new Random();
+        protected readonly Random Random = new Random();
 }

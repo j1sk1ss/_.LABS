@@ -8,7 +8,7 @@ public class Quest4 : Labs
     public void Main()
     {
         Console.WriteLine("Choose a work number: ");
-        new Quest4().GetType().GetMethod($"Work_{Math.ToInt(Console.ReadLine())}")?.Invoke(new Quest4(), null);
+            new Quest4().GetType().GetMethod($"Work_{Math.ToInt(Console.ReadLine())}")?.Invoke(new Quest4(), null);
     }
     public static void Work_1() // Проверяет правильность скобочной последовательности из стэка.
     {
@@ -23,18 +23,9 @@ public class Quest4 : Labs
                         if (i < lenght - 1) if (Check(now, bracketLine.Peek())) { opened[0] = -100; break; }
                             SequanceAdd(opened, now);
                     }
-        switch (opened[0])
-        {
-            case 0 when opened[1] == 0:
-                Console.WriteLine("The sequence is correct. ");
-                break;
-            case -100:
-                Console.WriteLine("The sequence is incorrect. Closed brackets for opening new is not exist. ");
-                break;
-            default:
-                Console.WriteLine("The sequence is incorrect. Brackets don't closing. ");
-                break;
-        }
+        if (opened[0] == opened[1] && opened[0] == 0) Console.WriteLine("The sequence is correct. ");
+        else if (opened[0] == -100) Console.WriteLine("The sequence is incorrect. Closed brackets for opening new is not exist. ");
+        else Console.WriteLine("The sequence is incorrect. Brackets don't closing. ");
     }
     private static bool Check(char line, char next)
     {
@@ -65,7 +56,7 @@ public class Quest4 : Labs
         for (var i = 0; i < capacity; i++) nums.Enqueue(Random.Next() % 100);
             Console.WriteLine($"Uniq elements from {nums.Count} : {Elements(nums)}");
     }
-    private string Elements(Queue<int> queue) 
+    private static string Elements(Queue<int> queue) 
     {
         var uniqNums = new int[1];
         for (var j = 0; j < queue.Count; j++)

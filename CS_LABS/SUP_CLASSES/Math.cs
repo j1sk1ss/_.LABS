@@ -16,7 +16,6 @@ namespace CS_LABS.SUP_CLASSES
                 throw;
             }
         }
-
         public double ToDouble(string str)
         {
             try
@@ -34,8 +33,7 @@ namespace CS_LABS.SUP_CLASSES
             double? tmpC = System.Math.Pow(coordinates[0, 0] - coordinates[1, 0], 2) +
                            System.Math.Pow(coordinates[0, 1] - coordinates[1, 1], 2);
             if (tmpC < System.Math.Pow(radius, 2.0)) return "Dot in this circle."; 
-            if (tmpC == System.Math.Pow(radius, 2.0)) return "Dot on the circle.";
-            return "Dot not in this circle.";
+            return tmpC == System.Math.Pow(radius, 2.0) ? "Dot on the circle." : "Dot not in this circle.";
         }
     }
 }
