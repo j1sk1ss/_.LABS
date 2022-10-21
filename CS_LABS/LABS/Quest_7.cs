@@ -6,8 +6,7 @@ namespace CS_LABS.LABS;
 public class Quest7
 {
     public void Main()
-    {
-        var vector = new Vector();
+    { var vector = new Vector();
         for (var i = 0; i < 10; i++) vector.Push(i);
         Console.WriteLine(vector.Print());
             vector.Include(99,5);
@@ -18,6 +17,5 @@ public class Quest7
         { sum += vector[j]; }
         vector.Delete(3);
         Console.WriteLine(vector.Print());
-        Console.WriteLine(vector.Count);
-    }
+        Console.WriteLine(vector.Count); }
 }

@@ -1,4 +1,3 @@
-using System;
 namespace CS_LABS.SUP_CLASSES;
 public class MyStack : Vector
 { public void Clear()

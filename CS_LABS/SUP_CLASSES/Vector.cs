@@ -5,7 +5,7 @@ namespace CS_LABS.SUP_CLASSES;
 public class Vector
 {
     protected int[] Array { get; set; }
-    public int Count { get; set; }
+    public int Count { get; protected set; }
     public Vector()
     { Array = System.Array.Empty<int>();
        Count = 0; }
@@ -34,7 +34,7 @@ public class Vector
     public void Delete(int position)
     {var ar = new int[Array.Length - 1];
         for (var j = 0; j < ar.Length; j++)
-            if (j < position) ar[j] = Array[j];
+            if (j < position) ar[j] = Array[j]; 
             else { if (j >= position) ar[j] = Array[j + 1]; }
         Array = ar;
         Count = ar.Length; }

@@ -31,9 +31,6 @@ public class Quest6 : Labs
              sw.WriteAsync(month); }
     }
     public static void Work_3()
-    { var mt1 = new int[0,0];
-        var mt2 = new int[0,0];
-        var matrixA = File.ReadAllText($"{Path}MatrixA.txt").Split("\n").ToString()?.Split(" ");
-        var matrixB = File.ReadAllText($"{Path}MatrixB.txt").Split("\n").
-            ToString()?.Split(" "); }
+    { 
+    }
 }
