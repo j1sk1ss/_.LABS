@@ -1,25 +1,23 @@
-using System.Collections.Generic;
+using System;
 using CS_LABS.SUP_CLASSES;
 
 namespace CS_LABS.LABS;
+
 public class Quest7
 {
-    private readonly Labs _labs = new Labs();
     public void Main()
     {
-
+        var vector = new Vector();
+        for (var i = 0; i < 10; i++) vector.Push(i);
+        Console.WriteLine(vector.Print());
+            vector.Include(99,5);
+            vector.Include(99,9);
+            Console.WriteLine(vector.Print());
+            var sum = 0;
+        for (var j = 0; j < vector.Count; j++)
+        { sum += vector[j]; }
+        vector.Delete(3);
+        Console.WriteLine(vector.Print());
+        Console.WriteLine(vector.Count);
     }
-
-} 
-internal class ArrayWorker
-{ ArrayWorker(){}
-    int GetElement(IReadOnlyList<int> array, int index) {
-        return array[index]; }
-    void SetElement(int[] array, int index, int value) {
-        array[index] = value; }
-    int[] Push(int[] array, int value)
-    { var ar = new int[array.Length + 1];
-        for (var j = 0; j < array.Length; j++) ar[j] = array[j];
-        ar[^1] = value;
-        return ar; }
 }
