@@ -1,8 +1,9 @@
 using System;
+using CS_LABS.INTERFACES;
 
 namespace CS_LABS.SUP_CLASSES;
 
-public class MyQueue : Vector
+public class MyQueue : Vector, IVector
 {
     public void Clear()
     {

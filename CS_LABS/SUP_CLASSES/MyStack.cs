@@ -1,8 +1,9 @@
 using System;
+using CS_LABS.INTERFACES;
 
 namespace CS_LABS.SUP_CLASSES;
 
-public class MyStack : Vector
+public class MyStack : Vector, IVector
 {
     public void Clear()
     {
