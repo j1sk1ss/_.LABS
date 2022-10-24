@@ -3,7 +3,7 @@ namespace CS_LABS.OBJECTS;
 public class Employee
 {
     public delegate void ChangeJobDelegate(Jobs title, double salary);
-    public ChangeJobDelegate ChangeJob = null;
+    public readonly ChangeJobDelegate ChangeJob = null;
     public Employee()
     { 
         ChangeJob += SalaryChange;
