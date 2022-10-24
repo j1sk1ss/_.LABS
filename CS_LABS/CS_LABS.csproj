@@ -7,6 +7,7 @@
 
     <ItemGroup>
       <Compile Remove="Library.cs" />
+      <Compile Remove="OBJECTS.cs" />
     </ItemGroup>
 
 </Project>
