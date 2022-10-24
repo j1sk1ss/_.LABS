@@ -8,30 +8,16 @@ public class Quest4 : Labs
             new Quest4().GetType().GetMethod($"Work_{Math.ToInt(Console.ReadLine())}")?.
                 Invoke(new Quest4(), null); }
     public static void Work_1() // Проверяет правильность скобочной последовательности из стэка.
-    { Console.WriteLine("This work where u should write a line that all consist of ()[] symbols," +
-                        " after program will check correctness of this sequence: ");
-        var bracketLine = new Stack<char>(Console.ReadLine()?.ToCharArray()!);
-        var opened = new int[2]; // 0 - () ; 1 - [] ;
-        var lenght = bracketLine.Count;
-                for (var i = 0; i < lenght; i++) // в -> стек
-                { var now = bracketLine.Pop();
-                    if (i < lenght - 1) if (Check(now, bracketLine.Peek())) { opened[0] = -100; break; }
-                        SequanceAdd(opened, now); }
-        if (opened[0] == opened[1] && opened[0] == 0) Console.WriteLine("The sequence is correct. ");
-        else if (opened[0] == -100) Console.WriteLine("The sequence is incorrect. Closed brackets for opening new is not exist. ");
-        else Console.WriteLine("The sequence is incorrect. Brackets don't closing. "); }
-    private static bool Check(char line, char next) {
-        return line == ')' && next == '[' || line == ']' && next == '('; }
-    private static void SequanceAdd(IList<int> array, char symb)
-    { switch (symb)
-        { case '(': array[0]++;
-                break;
-            case '[': array[1]++;
-                break;
-            case ')': array[0]--;
-                break;
-            case ']': array[1]--;
-                break; }
+    { 
+        Console.WriteLine("Enter a bracket sequence: ");
+        var str = Console.ReadLine()!.ToCharArray();
+        var brackets = new Stack<char>();
+        for (var i = 0; i < str.Length; i++)
+        {
+            if (str[i] == ')' || str[i] == ']') break;
+            brackets.Push(str[i]);
+
+        }
     }
     public void Work_2() // Используя очередь выводит все уникальные элементы
     {

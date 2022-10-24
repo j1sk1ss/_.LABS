@@ -1,9 +1,16 @@
+using System;
+
 namespace CS_LABS.OBJECTS;
 
 public class Employee
 {
     public delegate void ChangeJobDelegate(Jobs title, double salary);
-    public readonly ChangeJobDelegate ChangeJob = null;
+    public readonly ChangeJobDelegate ChangeJob;
+
+    public static void ChangeStrings(Action<string> vd, string str)
+    {
+        vd(str);
+    }
     public Employee()
     { 
         ChangeJob += SalaryChange;
@@ -20,7 +27,6 @@ public class Employee
         Middle,
         Junior
     }
-
     public void SurnameChange(string surname)
     {
         Surname = surname;

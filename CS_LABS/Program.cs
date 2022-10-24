@@ -22,7 +22,7 @@ namespace CS_LABS
                 { 10, new Quest10().Main }
             };
             Console.WriteLine("Choose a Lab: ");
-            labs[new Math().ToInt(Console.ReadLine())]();
+            labs[int.Parse(Console.ReadLine()!)]();
         }
     }
 }
