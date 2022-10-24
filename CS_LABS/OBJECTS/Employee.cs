@@ -2,13 +2,12 @@ namespace CS_LABS.OBJECTS;
 
 public class Employee
 {
-    public delegate void ChangeJob(Jobs title, double salary);
-    
+    public delegate void ChangeJobDelegate(Jobs title, double salary);
+    public ChangeJobDelegate ChangeJob = null;
     public Employee()
-    {
-        ChangeJob changeJob = null;
-        changeJob += SalaryChange;
-        changeJob += TitleChange;
+    { 
+        ChangeJob += SalaryChange;
+        ChangeJob += TitleChange;
     }
     public string Surname { get; set; }
     public string Name { get; set; }

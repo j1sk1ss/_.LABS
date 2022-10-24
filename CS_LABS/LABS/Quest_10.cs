@@ -35,11 +35,16 @@ public class Quest10
             {
                 Surname = "Yunicin",
                 Name = "Stepan",
-                Salary = 31000.0,
+                Salary = 23000.0,
                 Job = Employee.Jobs.Junior
             },
         };
         Console.WriteLine(lst[0].Job + " " + lst[0].Surname);
-        
+        lst[0].ChangeJob(Employee.Jobs.Senior, 75000.0);
+        lst[1].ChangeJob(Employee.Jobs.Middle, 42000.0);
+        lst[2].ChangeJob(Employee.Jobs.TeamLeader, 80000.0);
+        lst.RemoveAt(3);
+        Console.WriteLine(lst[0].Job + " " + lst[0].Surname + " " + lst[0].Salary);
+
     }
 }
