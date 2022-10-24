@@ -17,7 +17,8 @@ namespace CS_LABS
                 { 5, new Quest5().Main },
                 { 6, new Quest6().Main },
                 { 7, new Quest7().Main },
-                { 8, new Quest8().Main }
+                { 8, new Quest8().Main },
+                { 9, new Quest9().Main }
             };
             Console.WriteLine("Choose a Lab: ");
             labs[new Math().ToInt(Console.ReadLine())]();
