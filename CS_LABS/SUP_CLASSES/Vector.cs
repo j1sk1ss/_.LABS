@@ -1,93 +1,57 @@
-using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace CS_LABS.SUP_CLASSES;
-
-public class Vector
-{
-    protected int[] Array { get; set; }
+public class Vector<T> {
+    protected List<T> Array { get; set; }
     public int Count { get; set; }
-
-    public Vector()
-    {
-        Array = System.Array.Empty<int>();
+    public Vector() {
+        Array = new List<T>();
         Count = 0;
     }
-
-    public Vector(int[] array)
-    {
-        Array = array;
-        Count = array.Length;
+    public Vector(IReadOnlyCollection<T> array) {
+        Array = array.ToList();
+        Count = array.Count;
     }
-
-    public static Vector operator +(Vector obj1, Vector obj2)
-    {
-        Vector ar = new()
-        {
-            Array = obj1.Array.Concat(obj2.Array).ToArray(),
+    public static Vector<T> operator +(Vector<T> obj1, Vector<T> obj2) {
+        Vector<T> ar = new() {
+            Array = obj1.Array.Concat(obj2.Array).ToList(),
             Count = obj1.Count + obj2.Count
         };
         return ar;
     }
-
-    public int this[int key]
-    {
+    public T this[int key] {
         get => Array[key];
         set => SetElement(key, value);
     }
-
-    private void SetElement(int index, int value)
-    {
+    private void SetElement(int index, T value) {
         Array[index] = value;
     }
-
-    public void Include(int value, int position)
+    public void Include(T value, int position)
     {
-        var ar = new int[Array.Length + 1];
-        for (var j = 0; j < Array.Length + 1; j++)
+        var ar = new T[Array.Count + 1];
+        for (var j = 0; j < Array.Count + 1; j++)
             if (j < position)
                 ar[j] = Array[j];
-            else
-            {
+            else {
                 if (j == position) ar[j++] = value;
                 ar[j] = Array[j - 1];
             }
-
-        Array = ar;
+        Array = ar.ToList();
         Count = ar.Length;
     }
-
-    public void Delete(int position)
-    {
-        var ar = new int[Array.Length - 1];
-        for (var j = 0; j < ar.Length; j++)
-            if (j < position) ar[j] = Array[j];
-            else
-            {
-                if (j >= position) ar[j] = Array[j + 1];
-            }
-
-        Array = ar;
-        Count = ar.Length;
+    public void Delete(int position) {
+        Array.RemoveAt(position);
     }
-
-    public void Push(int value)
-    {
-        var ar = new int[Array.Length + 1];
-        for (var j = 0; j < Array.Length; j++) ar[j] = Array[j];
-        ar[^1] = value;
-        Array = ar;
-        Count++;
+    public void Push(T value) {
+        Array.Add(value);
     }
-
-    public string Print()
-    {
+    public string Print() {
         return Array.Aggregate("", (current, t) => current + (t + "; "));
     }
-
-    ~Vector()
-    {
-        Array = System.Array.Empty<int>();
+    ~Vector() {
+        Array.Clear();
         Count = 0;
     }
 }

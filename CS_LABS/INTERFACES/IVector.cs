@@ -1,8 +1,8 @@
 namespace CS_LABS.INTERFACES;
 
-public interface IVector
+public interface IVector<T>
 {
-    public int Peek();
+    public T Peek();
     public void Clear();
-    public bool Contains(int value);
+    public bool Contains(T value);
 }

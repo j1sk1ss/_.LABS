@@ -6,7 +6,7 @@ namespace CS_LABS.LABS;
 public class Quest7
 {
     public void Main()
-    { var vector = new Vector();
+    { var vector = new Vector<int>();
         for (var i = 0; i < 10; i++) vector.Push(i);
         Console.WriteLine(vector.Print());
         vector.Include(99, 5);
