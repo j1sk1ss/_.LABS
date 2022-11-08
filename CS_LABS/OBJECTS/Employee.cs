@@ -1,18 +1,10 @@
 using System;
-
 namespace CS_LABS.OBJECTS;
 
-public class Employee
-{
+public class Employee {
     public delegate void ChangeJobDelegate(Jobs title, double salary);
     public readonly ChangeJobDelegate ChangeJob;
-
-    public static void ChangeStrings(Action<string> vd, string str)
-    {
-        vd(str);
-    }
-    public Employee()
-    { 
+    public Employee() { 
         ChangeJob += SalaryChange;
         ChangeJob += TitleChange;
     }
@@ -20,24 +12,22 @@ public class Employee
     public string Name { get; set; }
     public double Salary { get; set; }
     public Jobs Job { get; set; }
-    public enum Jobs
-    {
+    public void SurnameChange(string surname) {
+        Surname = surname;
+    }
+    public void SalaryChange(Jobs title, double salary) {
+        Salary = salary;
+    }
+    public void TitleChange(Jobs title, double salary) {
+        Job = title;
+    }
+    public static void ChangeStrings(Action<string> vd, string str) {
+        vd(str);
+    }
+    public enum Jobs {
         TeamLeader,
         Senior,
         Middle,
         Junior
     }
-    public void SurnameChange(string surname)
-    {
-        Surname = surname;
-    }
-    private void SalaryChange(Jobs title, double salary)
-    {
-        Salary = salary;
-    }
-    public void TitleChange(Jobs title, double salary)
-    {
-        Job = title;
-    }
-    
 }

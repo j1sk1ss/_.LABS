@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using CS_LABS.OBJECTS;
 
 namespace CS_LABS.LABS;
-
 public class Quest10 {
     public void Main() {
         var lst = new List<Employee> {

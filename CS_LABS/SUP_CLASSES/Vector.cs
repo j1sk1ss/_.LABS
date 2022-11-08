@@ -28,8 +28,7 @@ public class Vector<T> {
     private void SetElement(int index, T value) {
         Array[index] = value;
     }
-    public void Include(T value, int position)
-    {
+    public void Include(T value, int position) {
         var ar = new T[Array.Count + 1];
         for (var j = 0; j < Array.Count + 1; j++)
             if (j < position)

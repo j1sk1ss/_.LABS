@@ -7,5 +7,6 @@ public class Quest8
 {
     public void Main()
     {
+        Vector<int> stack = new MyStack<int>();
     }
 }

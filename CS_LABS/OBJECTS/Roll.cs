@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using CS_LABS.INTERFACES;
 
 namespace CS_LABS.SUP_CLASSES;
 
-public class Roll<T>
+public class Roll<T> 
 {
     public List<T> Data;
     public int Count { get; set; }
