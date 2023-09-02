@@ -10,8 +10,4 @@
       <Compile Remove="OBJECTS.cs" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="OBJECTS" />
-    </ItemGroup>
-
 </Project>

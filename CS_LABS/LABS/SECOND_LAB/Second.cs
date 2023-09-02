@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using CS_LABS.INTERFACES;
 
 namespace CS_LABS.LABS;
 
@@ -35,7 +34,7 @@ public class Second : Quest {
     /// </summary>
     private void ThirdTask() =>
         Console.WriteLine(new Regex("\\.").Replace( 
-            File.ReadAllText(@"C:\Users\j1sk1ss\RiderProjects\CS.LABS\CS_LABS\FILES\SECOND_LAB\DatesSecondLab.txt"), "-"));
+            File.ReadAllText(@"/Users/nikolaj/RiderProjects/CS.LABS/CS_LABS/LABS/SECOND_LAB/FILES/DatesSecondLab.txt"), "-"));
 
     /// <summary>
     /// Дан текст, содержащий через запятую имена людей и их телефон,
@@ -43,14 +42,10 @@ public class Second : Quest {
     /// </summary>
     private void FourthTask() {
         var text = File.ReadAllText(
-            @"C:\Users\j1sk1ss\RiderProjects\CS.LABS\CS_LABS\FILES\SECOND_LAB\NamesSecondLab.txt");
+            @"/Users/nikolaj/RiderProjects/CS.LABS/CS_LABS/LABS/SECOND_LAB/FILES/NamesSecondLab.txt");
 
-        var value = new List<string>();
-        foreach (Match match in new Regex(@"\b[0-9]+|[a-zA-Z]+\b").Matches(text)) 
-            value.Add(match.Value);
-
-        for (var i = 0; i < value.Count - 1; i += 2) 
-            Console.WriteLine($"Имя: {value[i]} | Телефон: {value[i + 1]}");
+        foreach (Match match in new Regex(@"([^\,\W]+[a-zA-Z])([^\,]+[0-9])").Matches(text)) 
+            Console.WriteLine($"Имя: {match.Groups[1].Value} | Телефон: {match.Groups[2].Value}");
     }
     
     private bool IsMatch(string pattern) {

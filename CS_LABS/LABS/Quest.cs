@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CS_LABS.INTERFACES;
+namespace CS_LABS.LABS;
 
 public abstract class Quest {
     public void Initialization() {
