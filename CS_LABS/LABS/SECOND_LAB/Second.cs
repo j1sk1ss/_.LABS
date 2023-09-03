@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace CS_LABS.LABS;
+namespace CS_LABS.LABS.SECOND_LAB;
 
 public class Second : Quest {
     public Second() {
@@ -26,7 +26,7 @@ public class Second : Quest {
     /// содержащим буквы в разных регистрах, цифры и дополнительные
     /// символы из списка «!@#$%^&*,.?»
     /// </summary>
-    private void SecondTask() => Console.WriteLine(IsMatch("^(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)[0-9a-zA-Z]{8,}$").ToString());
+    private void SecondTask() => Console.WriteLine(IsMatch(@"^(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)(?=.*[!@#$%^&*,.?].*)[0-9a-zA-Z!@#$%^&*,.?]{8,}$").ToString());
 
     /// <summary>
     /// Преобразуйте все даты в тексте из формата ДД.ММ.ГГГГ в ДД-ММ-
