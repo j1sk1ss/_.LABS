@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace CS_LABS.LABS;
+namespace CS_LABS.LABS.METHODS.FIRST_LAB;
 
 public class First : Quest {
     public First() {

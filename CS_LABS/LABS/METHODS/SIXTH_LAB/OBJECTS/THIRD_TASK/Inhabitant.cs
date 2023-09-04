@@ -1,4 +1,4 @@
-namespace CS_LABS.LABS.SIXTH_LAB.OBJECTS.THIRD_TASK;
+namespace CS_LABS.LABS.METHODS.SIXTH_LAB.OBJECTS.THIRD_TASK;
 
 public class Inhabitant {
     public string Surname;

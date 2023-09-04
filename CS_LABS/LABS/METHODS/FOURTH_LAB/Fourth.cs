@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CS_LABS.LABS.FOURTH_LAB;
+namespace CS_LABS.LABS.METHODS.FOURTH_LAB;
 
 public class Fourth : Quest {
     public Fourth() {

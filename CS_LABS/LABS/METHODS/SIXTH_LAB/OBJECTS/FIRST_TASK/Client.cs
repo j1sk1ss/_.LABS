@@ -1,4 +1,4 @@
-namespace CS_LABS.LABS.SIXTH_LAB.OBJECTS.FIRST_TASK;
+namespace CS_LABS.LABS.METHODS.SIXTH_LAB.OBJECTS.FIRST_TASK;
 
 public class Client {
     public ulong Code;

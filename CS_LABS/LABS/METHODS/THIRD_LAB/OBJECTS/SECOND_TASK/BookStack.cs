@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CS_LABS.LABS.THIRD_LAB.OBJECTS.SECOND_TASK;
+namespace CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.SECOND_TASK;
 
 public delegate List<Book> SortType(List<Book> books, string value);
 

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CS_LABS.LABS.FIFES_LAB;
+namespace CS_LABS.LABS.METHODS.FIFES_LAB;
 
 public class Fifes : Quest {
     public Fifes() {

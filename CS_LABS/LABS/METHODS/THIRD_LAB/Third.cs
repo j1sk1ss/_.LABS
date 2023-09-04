@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CS_LABS.LABS.THIRD_LAB.OBJECTS.FIRST_TASK;
-using CS_LABS.LABS.THIRD_LAB.OBJECTS.SECOND_TASK;
+using CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.FIRST_TASK;
+using CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.SECOND_TASK;
 
-namespace CS_LABS.LABS.THIRD_LAB;
+namespace CS_LABS.LABS.METHODS.THIRD_LAB;
 
 public class Third : Quest {
     public Third() {

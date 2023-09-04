@@ -1,6 +1,6 @@
 using System;
 
-namespace CS_LABS.LABS.THIRD_LAB.OBJECTS.FIRST_TASK;
+namespace CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.FIRST_TASK;
 
 public class Receiver {
     public Receiver(int answerCount) {

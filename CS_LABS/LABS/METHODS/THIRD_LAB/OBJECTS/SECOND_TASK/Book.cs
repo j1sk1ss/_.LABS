@@ -1,6 +1,6 @@
 using System;
 
-namespace CS_LABS.LABS.THIRD_LAB.OBJECTS.SECOND_TASK;
+namespace CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.SECOND_TASK;
 
 public class Book {
     public Book(string name, string author, string publisher) {

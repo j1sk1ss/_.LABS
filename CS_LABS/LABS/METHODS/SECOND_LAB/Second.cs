@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace CS_LABS.LABS.SECOND_LAB;
+namespace CS_LABS.LABS.METHODS.SECOND_LAB;
 
 public class Second : Quest {
     public Second() {
