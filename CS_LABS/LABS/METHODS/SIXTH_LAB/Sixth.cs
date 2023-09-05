@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using CS_LABS.LABS.METHODS.SIXTH_LAB.OBJECTS.FIRST_TASK;
 using CS_LABS.LABS.METHODS.SIXTH_LAB.OBJECTS.SECOND_TASK;
 using CS_LABS.LABS.METHODS.SIXTH_LAB.OBJECTS.THIRD_TASK;
@@ -11,7 +12,8 @@ public class Sixth : Quest {
     public Sixth() {
         Quests = new List<Action> {
             FirstTask,
-            SecondTask
+            SecondTask,
+            ThirdTask
         };
     }
     
@@ -90,10 +92,22 @@ public class Sixth : Quest {
                 new Inhabitant {
                     Apartment  = i,
                     Surname    = new Random(DateTime.Now.Second + i).Next(1000, 6000).ToString(),
-                    Debt       = new Random(i * i).Next(10, 100000) / 100d
+                    Debt       = new Random(i * i).Next(0, 100000) / 100d + 1000,
+                    Entrance   = i / 4,
+                    Floor      = i % 36 / 4
                 }
             );
         
-        
+        var answer = Enumerable.Range(1, 9).Select(floor => {
+            return Enumerable.Range(1, 4).Select(entrance => new {
+                Floor     = floor,
+                DebtCount = inhabitants.Count(man => man.Floor == floor && man.Entrance == entrance && man.Debt > 0),
+                DebtSum   = inhabitants.Where(man => man.Floor == floor && man.Entrance == entrance && man.Debt > 0).Sum(x => x.Debt)
+            });
+        }).SelectMany(x => x).OrderBy(x => x.DebtCount)
+            .Where(x => x.DebtCount > 0);
+
+        foreach (var floor in answer) 
+            Console.WriteLine("Count: {0} | Floor: {1} Summary: {2}", floor.DebtCount, floor.Floor, floor.DebtSum);
     }
 }

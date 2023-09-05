@@ -27,7 +27,7 @@ namespace CS_LABS {
 
         private static void Main() {
             Console.Write("Choose a Lab: ");
-            CryptoLabs[int.Parse(Console.ReadLine()!)].Initialization();
+            MethodsLabs[int.Parse(Console.ReadLine()!)].Initialization();
         }
     }
 }
