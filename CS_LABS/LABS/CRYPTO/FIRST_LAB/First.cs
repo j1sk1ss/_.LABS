@@ -7,12 +7,45 @@ namespace CS_LABS.LABS.CRYPTO.FIRST_LAB;
 public class First : Quest {
     public First() {
         Quests = new List<Action> {
+            Example,
+            SecondExample,
+            ThirdExample,
             FirstTask,
             SecondTask,
             ThirdTask,
             FourthTask,
             FifesTask
         };
+    }
+
+    private void Example() => Console.WriteLine("Answer is: {0}", EuqlidAlghoritm(int.Parse(Console.ReadLine()!), int.Parse(Console.ReadLine()!)));
+
+    private int EuqlidAlghoritm(int firstNumber, int secondNumber) {
+        if (secondNumber == 0 || firstNumber == 0) {
+            if (secondNumber == 0) return firstNumber;
+
+            return 0;
+        }
+
+        Console.WriteLine("{0} = {1} * {2} + {3}", firstNumber, secondNumber, firstNumber / secondNumber, firstNumber % secondNumber);
+        return secondNumber == 0 ? firstNumber : EuqlidAlghoritm(secondNumber, firstNumber % secondNumber);
+    }
+
+    private void SecondExample() {
+        var number = int.Parse(Console.ReadLine()!);
+        if (number > 0)
+            foreach (var num in LatticeEratosthenes()) 
+                Console.Write("{0}, ", num);
+        else 
+            Console.WriteLine("Incorrect number");
+    }
+
+    private void ThirdExample() {
+        var number = int.Parse(Console.ReadLine()!);
+        if (number > 0)
+            Console.WriteLine("Answer: {0}", string.Join(", ", Enumerable.Range(0, number).Where(x => MinimumDiv(number, x) == 1)));
+        else    
+            Console.WriteLine("Incorrect number");
     }
 
     private const int GroupPosition = 21;
@@ -48,10 +81,10 @@ public class First : Quest {
     /// Используя следствие алгоритма Эратосфена доказать, что число простое
     /// </summary>
     private void FourthTask() {
-        foreach (var num in LatticeEratosthenes(2, 1887)) 
+        foreach (var num in LatticeEratosthenes(1887)) 
             Console.WriteLine(num);
         
-        foreach (var num in LatticeEratosthenes(2, 573)) 
+        foreach (var num in LatticeEratosthenes(573)) 
             Console.WriteLine(num);
     }
 
@@ -72,6 +105,6 @@ public class First : Quest {
     private static int MinimumDiv(List<int> numbers) =>
         numbers.Aggregate(0, (current, num) => MinimumDiv(num, current));
     
-    private static List<int> LatticeEratosthenes(int start, int end) =>
-        Enumerable.Range(start, end).Where(x => Enumerable.Range(2, (int)Math.Sqrt(end)).All(y => x % y != 0)).ToList();
+    private static List<int> LatticeEratosthenes(int end) =>
+        Enumerable.Range(2, end).Where(x => Enumerable.Range(2, (int)Math.Sqrt(x) - 1).All(i => x % i != 0)).ToList();
 }
