@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace CS_LABS.LABS.METHODS.SECOND_LAB;
@@ -34,7 +35,8 @@ public class Second : Quest {
     /// </summary>
     private void ThirdTask() =>
         Console.WriteLine(new Regex("\\.").Replace( 
-            File.ReadAllText(@"/Users/nikolaj/RiderProjects/CS.LABS/CS_LABS/LABS/SECOND_LAB/FILES/DatesSecondLab.txt"), "-"));
+            File.ReadAllText(@"/Users/nikolaj/RiderProjects/CS.LABS/CS_LABS/LABS/METHODS/SECOND_LAB/FILES/DatesSecondLab.txt"),
+            "-"));
 
     /// <summary>
     /// Дан текст, содержащий через запятую имена людей и их телефон,
@@ -42,10 +44,10 @@ public class Second : Quest {
     /// </summary>
     private void FourthTask() {
         var text = File.ReadAllText(
-            @"/Users/nikolaj/RiderProjects/CS.LABS/CS_LABS/LABS/SECOND_LAB/FILES/NamesSecondLab.txt");
+            @"/Users/nikolaj/RiderProjects/CS.LABS/CS_LABS/LABS/METHODS/SECOND_LAB/FILES/NamesSecondLab.txt");
 
-        foreach (Match match in new Regex(@"([^\,\W]+[a-zA-Z])([^\,]+[0-9])").Matches(text)) 
-            Console.WriteLine($"Имя: {match.Groups[1].Value} | Телефон: {match.Groups[2].Value}");
+        new Regex(@"([^\,\W]+[a-zA-Z])([^\,]+[0-9])").Matches(text).ToList().ForEach(match =>
+            Console.WriteLine("Имя: {0} | Телефон: {1}", match.Groups[1].Value, match.Groups[2].Value));
     }
     
     private bool IsMatch(string pattern) {

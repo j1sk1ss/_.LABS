@@ -1,15 +1,13 @@
 namespace CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.FIRST_TASK;
 
 public class Generator {
-    public delegate void AccountHandler(string message, out int answer);
+    public delegate int AccountHandler(string message);
 
     public event AccountHandler Event;
 
     public void Generate() {
-        var answer = 0;
-        Event?.Invoke("Event generated", out answer);
-
-        for (var i = 0; i < answer; i++) 
-            Event?.Invoke($"Event {i} generated", out var empty);
+        var count = Event?.Invoke("Event generated and return: {0}");
+        for (var i = 0; i < count; i++) 
+            Event?.Invoke($"Event {i} generated");
     }
 }

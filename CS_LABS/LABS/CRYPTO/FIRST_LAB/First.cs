@@ -21,20 +21,17 @@ public class First : Quest {
     private void Example() => Console.WriteLine("Answer is: {0}", EuqlidAlghoritm(int.Parse(Console.ReadLine()!), int.Parse(Console.ReadLine()!)));
 
     private int EuqlidAlghoritm(int firstNumber, int secondNumber) {
-        if (secondNumber == 0 || firstNumber == 0) {
-            if (secondNumber == 0) return firstNumber;
-
-            return 0;
-        }
-
+        if (secondNumber == 0 || firstNumber == 0)
+            return secondNumber == 0 ? firstNumber : 0;
+        
         Console.WriteLine("{0} = {1} * {2} + {3}", firstNumber, secondNumber, firstNumber / secondNumber, firstNumber % secondNumber);
-        return secondNumber == 0 ? firstNumber : EuqlidAlghoritm(secondNumber, firstNumber % secondNumber);
+        return EuqlidAlghoritm(secondNumber, firstNumber % secondNumber);
     }
 
     private void SecondExample() {
         var number = int.Parse(Console.ReadLine()!);
         if (number > 0)
-            foreach (var num in LatticeEratosthenes()) 
+            foreach (var num in LatticeEratosthenes(number)) 
                 Console.Write("{0}, ", num);
         else 
             Console.WriteLine("Incorrect number");

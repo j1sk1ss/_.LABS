@@ -3,14 +3,12 @@ using System;
 namespace CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.FIRST_TASK;
 
 public class Receiver {
-    public Receiver(int answerCount) {
-        AnswerCount = answerCount;
-    }
+    public Receiver(int answerCount) => AnswerCount = answerCount;
     
-    private int AnswerCount { get; set; }
+    private int AnswerCount { get; }
     
-    public void Receive(string message, out int answer) {
-        Console.WriteLine(message);
-        answer = AnswerCount;
+    public int Receive(string message) {
+        Console.WriteLine(message, AnswerCount);
+        return AnswerCount;
     }
 }

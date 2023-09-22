@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.FIRST_TASK;
 using CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.SECOND_TASK;
 
@@ -22,8 +23,8 @@ public class Third : Quest {
     /// события.
     /// </summary>
     private void FirstTask() {
-        var generator = new Generator();
-        var receiver = new Receiver(5);
+        var generator   = new Generator();
+        var receiver    = new Receiver(5);
 
         generator.Event += receiver.Receive;
         generator.Generate();
@@ -41,17 +42,17 @@ public class Third : Quest {
     /// </summary>
     private void SecondTask() {
         var bookStack = new BookStack(new List<Book> {
-            new ("1984", "Оруэл", "Cordell"),
-            new ("Ну погоди", "Менхаузен", "Книга"),
-            new ("Вперёд", "Колчак", "Сыктывкар"),
-            new ("Капитализм", "Маркс", "Капитал"),
-            new ("Восьмедисятые", "Билл Гейтс", "Майкрософт"),
-            new ("Оренбуржье", "Берг", "Оренбург")
+            new ("1984",            "Оруэл",        "Cordell"),
+            new ("Ну погоди",       "Менхаузен",    "Книга"),
+            new ("Вперёд",          "Колчак",       "Сыктывкар"),
+            new ("Капитализм",      "Маркс",        "Капитал"),
+            new ("Восьмедисятые",   "Билл Гейтс",   "Майкрософт"),
+            new ("Оренбуржье",      "Берг",         "Оренбург")
         });
 
-        var authorSort = new SortType((books, value) => books.Where(book => book.Author == value).ToList());
-        var nameSort = new SortType((books, value) => books.Where(book => book.Name == value).ToList());
-        var publisherSort = new SortType((books, value) => books.Where(book => book.Publisher == value).ToList());
+        var authorSort      = new BookStack.SortType((books, value) => books.Where(book => book.Author == value).ToList());
+        var nameSort        = new BookStack.SortType((books, value) => books.Where(book => book.Name == value).ToList());
+        var publisherSort   = new BookStack.SortType((books, value) => books.Where(book => book.Publisher == value).ToList());
         
         bookStack.Sort(authorSort, "Оруэл")[0].Print();
         bookStack.Sort(nameSort, "Капитализм")[0].Print();

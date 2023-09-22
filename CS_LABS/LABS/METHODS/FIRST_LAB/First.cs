@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace CS_LABS.LABS.METHODS.FIRST_LAB;
@@ -48,7 +49,6 @@ public class First : Quest {
     
     private static void ShowMatches(string pattern) {
         Console.Write("Write line: ");
-        foreach (Match match in new Regex(pattern).Matches(Console.ReadLine()!)) 
-            Console.WriteLine(match.Value);
+        new Regex(pattern).Matches(Console.ReadLine()!).ToList().ForEach(match => Console.WriteLine(match.Value));
     }
 }

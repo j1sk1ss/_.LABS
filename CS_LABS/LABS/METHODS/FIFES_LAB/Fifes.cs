@@ -17,10 +17,8 @@ public class Fifes : Quest {
     /// <summary>
     /// Найдите сумму ряда: 1.1 − 1.2 + 1.3 − …
     /// </summary>
-    private void FirstTask() {
-        var sum = Enumerable.Range(11, 15).Sum(x => x % 2 == 0 ? -x : x);
-        Console.WriteLine($"Answer: {sum / 10d}");
-    }
+    private void FirstTask() =>
+        Console.WriteLine($"Answer: {0}", Enumerable.Range(11, 15).Sum(x => x % 2 == 0 ? -x : x) / 10d);
 
     /// <summary>
     /// Дано целое число K (> 0) и целочисленная последовательность A.
@@ -47,12 +45,13 @@ public class Fifes : Quest {
     /// </summary>
     private void ThirdTask() {
         var lines = new List<string> {
-            "fshsf61jjdi77",
-            "jsjjs89dkk2",
-            "292929ldldldl",
-            "kokdo--2kkdd",
-            "..c,x,992",
-            "овыаов020ббсф"
+            "fshsf61jjdi77 892 *( 0())(( ---- 0000     ",
+            "jsjjs89dkk2j j oaooo ooo oooo8998****/`§  ",
+            "292929ldldldl      617235%%%%%%7e8        ",
+            "kokdo--2kkdd djj j n77 87 78 7878 78      ",
+            "..c,x,992 a    d joas          j jsod o   ",
+            "овыаов020ббсф aksdp a oadko akk ok 889 89 ",
+            "!@#$%^&*1@5#7@u@ue92\\   s''ds [[ [[[ [[[ "
         };
 
         foreach (var line in lines.Select(line => line.Where(char.IsDigit))) {
@@ -70,7 +69,7 @@ public class Fifes : Quest {
     /// возрастанию.
     /// </summary>
     private void FourthTask() {
-        var a = Enumerable.Range(0, 100);
+        var a = Enumerable.Range(-100, 100);
         var b = Enumerable.Range(20, 190);
 
         var sum =
