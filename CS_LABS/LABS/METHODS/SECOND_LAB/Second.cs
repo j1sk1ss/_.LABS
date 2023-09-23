@@ -20,22 +20,25 @@ public class Second : Quest {
     /// Проверить, является ли данная строка буквенно-цифровой, т.е.
     /// содержит только буквы и цифры.
     /// </summary>
-    private void FirstTask() => Console.WriteLine(IsMatch("\b[a-zA-Z0-9]+\b").ToString());
+    private void FirstTask() => File.ReadAllLines(@"/Users/nikolaj/RiderProjects/CS.LABS/CS_LABS/LABS/METHODS/SECOND_LAB/FILES/FIRST_TASK/Lines.txt").ToList()
+        .ForEach(line => Console.WriteLine(IsMatch(@"\b[a-zA-Z0-9]+\b", line).ToString()));
 
     /// <summary>
     /// Определите, что переданная строка является сложным паролем,
     /// содержащим буквы в разных регистрах, цифры и дополнительные
     /// символы из списка «!@#$%^&*,.?»
     /// </summary>
-    private void SecondTask() => Console.WriteLine(IsMatch(@"^(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)(?=.*[!@#$%^&*,.?].*)[0-9a-zA-Z!@#$%^&*,.?]{8,}$").ToString());
-
+    private void SecondTask() =>
+    File.ReadAllLines(@"/Users/nikolaj/RiderProjects/CS.LABS/CS_LABS/LABS/METHODS/SECOND_LAB/FILES/SECOND_TASK/Passwords.txt").ToList()
+        .ForEach(line => Console.WriteLine(IsMatch(@"^(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)(?=.*[!@#$%^&*,.?].*)[0-9a-zA-Z!@#$%^&*,.?]{8,}$", line).ToString()));
+    
     /// <summary>
     /// Преобразуйте все даты в тексте из формата ДД.ММ.ГГГГ в ДД-ММ-
     /// ГГГГ
     /// </summary>
     private void ThirdTask() =>
         Console.WriteLine(new Regex("\\.").Replace( 
-            File.ReadAllText(@"/Users/nikolaj/RiderProjects/CS.LABS/CS_LABS/LABS/METHODS/SECOND_LAB/FILES/DatesSecondLab.txt"),
+            File.ReadAllText(@"/Users/nikolaj/RiderProjects/CS.LABS/CS_LABS/LABS/METHODS/SECOND_LAB/FILES/THIRD_TASK/Dates.txt"),
             "-"));
 
     /// <summary>
@@ -44,14 +47,11 @@ public class Second : Quest {
     /// </summary>
     private void FourthTask() {
         var text = File.ReadAllText(
-            @"/Users/nikolaj/RiderProjects/CS.LABS/CS_LABS/LABS/METHODS/SECOND_LAB/FILES/NamesSecondLab.txt");
+            @"/Users/nikolaj/RiderProjects/CS.LABS/CS_LABS/LABS/METHODS/SECOND_LAB/FILES/FOURTH_TASK/Names.txt");
 
         new Regex(@"([^\,\W]+[a-zA-Z])([^\,]+[0-9])").Matches(text).ToList().ForEach(match =>
             Console.WriteLine("Имя: {0} | Телефон: {1}", match.Groups[1].Value, match.Groups[2].Value));
     }
     
-    private bool IsMatch(string pattern) {
-        Console.Write("Write line: ");
-        return new Regex(pattern).Matches(Console.ReadLine()!).Count > 0;
-    }
+    private bool IsMatch(string pattern, string line) => new Regex(pattern).Matches(line).Count > 0;
 }

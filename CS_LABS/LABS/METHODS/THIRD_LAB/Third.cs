@@ -49,14 +49,21 @@ public class Third : Quest {
             new ("Восьмедисятые",   "Билл Гейтс",   "Майкрософт"),
             new ("Оренбуржье",      "Берг",         "Оренбург")
         });
-
-        var authorSort      = new BookStack.SortType((books, value) => books.Where(book => book.Author == value).ToList());
-        var nameSort        = new BookStack.SortType((books, value) => books.Where(book => book.Name == value).ToList());
-        var publisherSort   = new BookStack.SortType((books, value) => books.Where(book => book.Publisher == value).ToList());
+ 
+        Console.WriteLine("\r\nAuthor sort:\n");
+        bookStack.Sort(books => {
+            return books.OrderBy(parameter => parameter.Author.Length).ToList();
+        }).ForEach(book => book.Print());
         
-        bookStack.Sort(authorSort, "Оруэл")[0].Print();
-        bookStack.Sort(nameSort, "Капитализм")[0].Print();
-        bookStack.Sort(publisherSort, "Cordell")[0].Print();
+        Console.WriteLine("\r\nName sort:\n");
+        bookStack.Sort(books => {
+            return books.OrderBy(parameter => parameter.Name.Length).ToList();
+        }).ForEach(book => book.Print());
+        
+        Console.WriteLine("\r\nPublisher sort:\n");
+        bookStack.Sort(books => {
+            return books.OrderBy(parameter => parameter.Publisher.Length).ToList();
+        }).ForEach(book => book.Print());
     }
     
     // Third in UI

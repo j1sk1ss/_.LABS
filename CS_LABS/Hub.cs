@@ -3,7 +3,7 @@ namespace CS_LABS {
     public static class Program {
         private static void Main() {
 
-            var methods = new  LABS.WorkType(new() {
+            var methods = new LABS.WorkType(new() {
                 new LABS.METHODS.FIRST_LAB.First(),
                 new LABS.METHODS.SECOND_LAB.Second(),
                 new LABS.METHODS.THIRD_LAB.Third(),
@@ -12,11 +12,11 @@ namespace CS_LABS {
                 new LABS.METHODS.SIXTH_LAB.Sixth()
             });
             
-            var crypto = new  LABS.WorkType(new() {
+            var crypto = new LABS.WorkType(new() {
                 new LABS.CRYPTO.FIRST_LAB.First()
             });
 
-            var probability = new  LABS.WorkType(new() {
+            var probability = new LABS.WorkType(new() {
                 new LABS.PROBABILITY_THEORY.FIRST_LAB.First()
             });
 

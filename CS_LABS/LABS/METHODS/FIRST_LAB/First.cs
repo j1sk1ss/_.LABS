@@ -15,18 +15,18 @@ public class First : Quest {
             FifesTask
         };
     }
-    
+
     /// <summary>
     /// Дана строка. Напишите программу, которая найдет слова 23, 2+3, 2++3,
     /// 2+++3, не захватив остальные.
     /// </summary>
-    private void FirstTask() => ShowMatches(@"\b2\+{0,}3\b");
+    private void FirstTask() => ShowMatches(@"\b2\+*3\b");
     
     /// <summary>
     /// Дана строка. Напишите программу, которая найдет слова, в которых по
     /// краям стоят буквы 'a', а между ними любое количество цифр.
     /// </summary>
-    private void SecondTask() => ShowMatches(@"\ba\d{0,}a\b");
+    private void SecondTask() => ShowMatches(@"\ba\d*a\b");
 
     /// <summary>
     /// Напишите программу, которая найдет слова следующего вида: по

@@ -7,7 +7,7 @@ public class BookStack {
     
     private List<Book> Books { get; }
     
-    public delegate List<Book> SortType(List<Book> books, string value);
+    public delegate List<Book> SortType(List<Book> books);
     
-    public List<Book> Sort(SortType sortType, string value) => sortType.Invoke(Books, value);
+    public List<Book> Sort(SortType sortType) => sortType.Invoke(Books);
 }

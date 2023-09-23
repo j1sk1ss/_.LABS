@@ -13,7 +13,7 @@ public class Fourth : Quest {
             FourthTask
         };
     }
-    
+
     /// <summary>
     /// Решите арифметический ребус (одна и та же буква означает одну и
     /// ту же цифру, горизонтальная черта указывает на то, что это число,
@@ -21,9 +21,8 @@ public class Fourth : Quest {
     /// (Ж−1)^5=ЖЖЖ(Ж−1)
     /// </summary>
     private void FirstTask() =>
-        Console.WriteLine("Answer: {0}", string.Join(" ", Enumerable.Range(0, 10)
-            .Where(x => Math.Abs(Math.Pow(x - 1, 5) - int.Parse(
-                $"{x}{x}{x}{(x - 1 < 0) switch { true => 9, false => x - 1 }}")) < .01)));
+        Console.WriteLine("Answer: {0}", string.Join(" ", Enumerable.Range(1, 10)
+            .Where(x => (int)Math.Pow(x - 1, 5) == int.Parse($"{x}{x}{x}{x - 1 < 0}"))));
 
     /// <summary>
     /// Есть 800 пятизначных чисел, не оканчивающихся нулем, и таких,
@@ -34,7 +33,7 @@ public class Fourth : Quest {
     private void SecondTask() {
         var nums = Enumerable.Range(10000, 100000)
                                     .Where(x => x % 10 != 0)
-                                    .Where(x => x - 9999 == int.Parse(string.Join("", x.ToString().Reverse())));
+                                    .Where(x => x - 9999 == int.Parse(x.ToString().Reverse().ToString()!));
         
         nums.ToList().ForEach(Console.WriteLine);
     }
@@ -44,10 +43,10 @@ public class Fourth : Quest {
     /// 5 и на 6 дают остаток 1 Найдите наименьшее из таких чисел.
     /// </summary>
     private void ThirdTask() =>
-        Console.WriteLine($"Answer: {0}", Enumerable.Range(0, 1000)
-                                                    .Where(x => x % 7 == 0)
-                                                    .Where(x => Enumerable.Range(2, 4).All(y => x % y == 1))
-                                                    .Min());
+        Console.WriteLine($"Answer: {0}", Enumerable
+            .Range(0, 1000)
+            .Where(x => x % 7 == 0)
+            .First(x => Enumerable.Range(2, 4).All(y => x % y == 1)));
 
     /// <summary>
     /// Известно, что сумма любого 6-значного числа с другим 6-значным
@@ -55,9 +54,9 @@ public class Fourth : Quest {
     /// кратна 11 и аналогично полученная разность – кратна 9 Докажите это.
     /// </summary>
     private void FourthTask() {
-        var nums = Enumerable.Range(100000, 1000000).Where(number => {
-            return (number + int.Parse(number.ToString()[1..] + number.ToString().First())) % 11 == 0 && 
-                   (number - int.Parse(number.ToString()[1..] + number.ToString().First())) % 9 == 0;
+        var nums = Enumerable.Range(100000, 900000).Where(number => {
+            return !((number + int.Parse(number.ToString()[1..] + number.ToString().First())) % 11 == 0 && 
+                   (number - int.Parse(number.ToString()[1..] + number.ToString().First())) % 9 == 0);
         });
         
         Console.WriteLine($"If we see, that count: {900000} equals answer: {nums.Count()}, we can say that it's true");
