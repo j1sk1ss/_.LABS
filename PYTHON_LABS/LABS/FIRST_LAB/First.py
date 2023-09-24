@@ -11,8 +11,11 @@ class First(Quest):
         super().__init__([
             first_task,
             second_task,
-            third_task
+            third_task,
+            fourth_task,
+            fifes_task
         ])
+
 
 # Даны координаты трех вершин треугольника: (x1, y1), (x2, y2), (x3, y3). Найти
 # его периметр и площадь, используя формулу для расстояния между двумя точками на
@@ -50,3 +53,42 @@ def second_task():
 # а 1200 и 2000 — являются).
 def third_task():
     print(365 + calendar.isleap(int(input('Year: '))))
+
+
+# Дано целое число N (> 0). Последовательность вещественных чисел AK
+# определяется следующим образом:
+def fourth_task():
+    max_count = int(input('Set N: '))
+    if max_count < 0:
+        print('Was set wrong value. Changed to 1')
+        max_count = 1
+
+    array = [2]
+    for i in range(0, max_count):
+        array.append(2 + 1 / array[i])
+
+    print(*array, sep=", ")
+
+
+# Дано целое число N (> 1). Последовательность чисел Фибоначчи FK
+# определяется следующим образом:
+# F1 = 1, F2 = 1, FK = FK−2 + FK−1, K = 3, 4, … .
+# Проверить, является ли число N числом Фибоначчи. Если является, то вывести
+# true, если нет — вывести false.
+def fifes_task():
+    expected = int(input('Set N: '))
+    if expected < 1:
+        print('Was set wrong value. Changed to 2')
+        expected = 2
+
+    array = [1, 1]
+    number = 0
+    while number < expected:
+        number = array[-2] + array[-1]
+        array.append(number)
+
+    if expected in array:
+        print(f'{number} in this array')
+    else:
+        print('This number not exist in array')
+

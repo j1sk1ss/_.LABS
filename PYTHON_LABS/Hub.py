@@ -1,7 +1,11 @@
 from PYTHON_LABS.LABS.FIRST_LAB.First import First
+from PYTHON_LABS.LABS.SECOND_LAB.Second import Second
+from PYTHON_LABS.LABS.THIRD_LAB.Third import Third
 
 labs = [
-    First()
+    First(),
+    Second(),
+    Third()
 ]
 
 while (True):
