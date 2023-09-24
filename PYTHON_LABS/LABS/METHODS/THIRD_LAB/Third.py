@@ -1,6 +1,7 @@
-from PYTHON_LABS.LABS.FIRST_LAB.OBJECTS.Point import Point
-from PYTHON_LABS.LABS.THIRD_LAB.CLASSES.Vector import Vector
-from PYTHON_LABS.LABS.THIRD_LAB.DECORATORS.Timer import timing_decorator
+from PYTHON_LABS.LABS.METHODS.FIRST_LAB.OBJECTS.Point import Point
+from PYTHON_LABS.LABS.METHODS.THIRD_LAB.CLASSES.Vector import Vector
+from PYTHON_LABS.LABS.METHODS.THIRD_LAB.DECORATORS.Timer import timing_decorator
+
 from PYTHON_LABS.LABS.Quest import Quest
 
 

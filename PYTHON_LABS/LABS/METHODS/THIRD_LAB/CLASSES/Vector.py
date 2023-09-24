@@ -1,4 +1,4 @@
-from PYTHON_LABS.LABS.FIRST_LAB.OBJECTS.Point import Point
+from PYTHON_LABS.LABS.METHODS.FIRST_LAB.OBJECTS.Point import Point
 
 
 class Vector:

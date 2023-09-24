@@ -1,6 +1,6 @@
-from PYTHON_LABS.LABS.FIRST_LAB.First import First
-from PYTHON_LABS.LABS.SECOND_LAB.Second import Second
-from PYTHON_LABS.LABS.THIRD_LAB.Third import Third
+from PYTHON_LABS.LABS.METHODS.FIRST_LAB.First import First
+from PYTHON_LABS.LABS.METHODS.SECOND_LAB.Second import Second
+from PYTHON_LABS.LABS.METHODS.THIRD_LAB.Third import Third
 
 labs = [
     First(),

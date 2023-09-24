@@ -1,8 +1,8 @@
 from collections import Counter
 
-from PYTHON_LABS.LABS.FIRST_LAB.OBJECTS.Point import Point
+from PYTHON_LABS.LABS.METHODS.FIRST_LAB.OBJECTS.Point import Point
 from PYTHON_LABS.LABS.Quest import Quest
-from PYTHON_LABS.LABS.SECOND_LAB.OBJECTS.SECOND_TASK.Matrix import Matrix
+from PYTHON_LABS.LABS.METHODS.SECOND_LAB.OBJECTS.SECOND_TASK.Matrix import Matrix
 
 
 class Second(Quest):
