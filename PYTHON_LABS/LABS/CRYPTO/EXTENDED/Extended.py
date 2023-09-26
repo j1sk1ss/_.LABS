@@ -44,30 +44,54 @@ def first_task():
                    (second_a, 5, 1),
                    (third_a, 7, 1)]]
 
-    for i in congruences:
-        x = chinese_remainder(i)
-        print("Answer:", x)
+    for congruence in congruences:
+        x = chinese_remainder(congruence)
+        if x is not None:
+            # Print the answer in the "x = n mod d" format
+            n, d = x, congruence[0][1]  # Assuming the first modulus in the congruence list
+            print(f"x = {n} mod {d}")
+        else:
+            print("No solution for congruence:", congruence)
 
 
-def egcd(a, b):
-    if 0 == b:
-        return 1, 0, a
+# Recursive function to calculate the greatest common divisor (GCD)
+def gcd(a, b):
+    if b == 0:
+        return a
 
-    x, y, q = egcd(b, a % b)
-    x, y = y, (x - a // b * y)
-
-    return x, y, q
+    return gcd(b, a % b)
 
 
-def chinese_remainder(pairs):
-    mod_list, remainder_list = [p[0] for p in pairs], [p[1] for p in pairs]
-    mod_product = reduce(lambda x, y: x * y, mod_list)
-    mi_list = [mod_product // x for x in mod_list]
-    mi_inverse = [egcd(mi_list[i], mod_list[i])[0] for i in range(len(mi_list))]
-    x = 0
+# Extended Euclidean Algorithm to find modular multiplicative inverse
+def extended_gcd(a, b):
+    if a == 0:
+        return b, 0, 1
+    else:
+        g, x, y = extended_gcd(b % a, a)
+        return g, y - (b // a) * x, x
 
-    for i in range(len(remainder_list)):
-        x += mi_list[i] * mi_inverse[i] * remainder_list[i]
-        x %= mod_product
 
-    return x / [p[2] for p in pairs][0]
+# Chinese Remainder Theorem evaluation for a list of congruences
+def chinese_remainder(congruences):
+    n = len(congruences)
+    a = [cong[0] for cong in congruences]
+    m = [cong[1] for cong in congruences]
+
+    # Calculate the product of all moduli
+    M = 1
+    for mi in m:
+        M *= mi
+
+    result = 0
+    for i in range(n):
+        # Calculate m_i
+        mi = M // m[i]
+        # Calculate the modular multiplicative inverse of mi modulo m[i]
+        _, _, inv = extended_gcd(mi, m[i])
+        # Add to the result
+        result += a[i] * mi * inv
+
+    # Ensure the result is non-negative by taking the modulo of M
+    result = result % M
+
+    return result
