@@ -1,5 +1,4 @@
 from PYTHON_LABS.LABS.Quest import Quest
-from functools import reduce
 
 
 class Extended(Quest):
@@ -17,32 +16,56 @@ third_a = group_number + 3 * 3
 
 
 def first_task():
-    congruences = [[(first_a, 3, 1),
-                   (second_a, 5, 1),
-                   (third_a, 7, 1)],
+    congruences = [[(first_a, 3, 1)],
+                   [(second_a, 5, 1)],
+                   [(third_a, 7, 1)],
 
-                   [(first_a, 4, 2),
-                   (second_a, 5, 1),
-                   (third_a, 9, 1)],
+                   [(first_a, 4, 2)],
+                   [(second_a, 5, 1)],
+                   [(third_a, 9, 1)],
 
-                   [(first_a, 3, 3),
-                   (second_a, 5, 1),
-                   (third_a, 9, 1),
-                   (first_a, 4, 4),
-                   (second_a, 5, 1),
-                   (third_a, 11, 1)],
+                   [(first_a, 3, 3)],
+                   [(second_a, 5, 1)],
+                   [(third_a, 9, 1)],
+                   [(first_a, 4, 4)],
+                   [(second_a, 5, 1)],
+                   [(third_a, 11, 1)],
 
-                   [(first_a, 4, 5),
-                   (second_a, 7, 1),
-                   (third_a, 11, 1)],
+                   [(first_a, 4, 5)],
+                   [(second_a, 7, 1)],
+                   [(third_a, 11, 1)],
 
-                   [(first_a, 3, 6),
-                   (second_a, 5, 1),
-                   (third_a, 11, 1)],
+                   [(first_a, 3, 6)],
+                   [(second_a, 5, 1)],
+                   [(third_a, 11, 1)],
 
-                   [(first_a, 13, 7),
-                   (second_a, 5, 1),
-                   (third_a, 7, 1)]]
+                   [(first_a, 13, 7)],
+                   [(second_a, 5, 1)],
+                   [(third_a, 7, 1)],
+
+                   [(8, 17, 1),
+                    (12, 29, 2),
+                    (4, 11, 1)],
+
+                   [(6, 17, 1),
+                    (22, 29, 5),
+                    (15, 111, 1)],
+
+                   [(17, 19, 1),
+                    (12, 19, 1),
+                    (5, 11, 1)],
+
+                   [(8, 17, 1),
+                    (12, 19, 7),
+                    (5, 11, 1)],
+
+                   [(8, 17, 1),
+                    (12, 19, 4),
+                    (5, 11, 1)],
+
+                   [(6, 15, 1),
+                    (11, 18, 8),
+                    (7, 11, 1)]]
 
     for congruence in congruences:
         x = chinese_remainder(congruence)
