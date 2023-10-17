@@ -19,8 +19,12 @@ namespace CS_LABS {
             var probability = new LABS.WorkType(new() {
                 new LABS.PROBABILITY_THEORY.FIRST_LAB.First()
             });
+            
+            var numMethods = new LABS.WorkType(new() {
+                new LABS.NUM_METHODS.FIRST_LAB.First()
+            });
 
-            methods.Initialize();
+            numMethods.Initialize();
         }
     }
 }
