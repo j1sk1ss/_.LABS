@@ -8,7 +8,7 @@ public class First : Quest {
         Quests = new List<Action> {
             FirstTask,
             SecondTask,
-            // ThirdTask,
+            ThirdTask,
             // FourthTask,
             // FifesTask
         };
@@ -17,4 +17,6 @@ public class First : Quest {
     private void FirstTask() => Script.BisectionMethod();
 
     private void SecondTask() => Script.NewtonMethod();
+    
+    private void ThirdTask() => Script.HoardMethod();
 }

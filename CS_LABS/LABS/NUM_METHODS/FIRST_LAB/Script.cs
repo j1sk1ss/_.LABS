@@ -10,8 +10,8 @@ public static class Script {
         const int numberOfIterations = 40;
         
         var arrayToOutput = new double[numberOfIterations, 8];
-        var a = 2.6;
-        var b = 2.4;
+        var a = -2.6;
+        var b = -2.4;
     
         var fa = Function(a);
         var fb = Function(b);
@@ -43,7 +43,7 @@ public static class Script {
         for (var i = 1; i < numberOfIterations + 1; i++) {
             var array = new string[8];
             for (var j = 0; j < 8; j++) 
-                array[j] = arrayToOutput[i - 1,j].ToString(CultureInfo.InvariantCulture);
+                array[j] = arrayToOutput[i - 1, j].ToString(CultureInfo.InvariantCulture);
 
             PrintRow(array);
         }
@@ -78,13 +78,44 @@ public static class Script {
         }
     }
 
+    public static void HoardMethod() {
+        const int numberOfIterations = 5;
+        
+        var result = new List<double>();
+        var arrayToOutput = new double[numberOfIterations, 7];
+
+        result.Add(-2.4);
+        result.Add(-2.6);
+        
+        for (var n = 0; n < numberOfIterations; n++) {
+            result.Add(result[n] - Function(result[n]) * (result[n + 1] - result[n]) / (Function(result[n + 1]) - Function(result[n])));
+            
+            arrayToOutput[n, 0] = n;
+            arrayToOutput[n, 1] = result[n+2];
+            arrayToOutput[n, 2] = result[n];
+            arrayToOutput[n, 3] = result[n+1];
+            arrayToOutput[n, 4] = Function(result[n]);
+            arrayToOutput[n, 5] = Function(result[n + 1]);
+            arrayToOutput[n, 6] = Math.Abs(result[n + 1] - result[n]);
+        }
+        
+        PrintRow("n", "xn + 1", "xn", "xn - 1", "f(xn - 1)", "f(xn)", "|x - xn - 1|");
+        for (var i = 1; i < numberOfIterations + 1; i++) {
+            var array = new string[7];
+            for (var j = 0; j < 7; j++) 
+                array[j] = arrayToOutput[i - 1, j].ToString(CultureInfo.InvariantCulture);
+
+            PrintRow(array);
+        }
+    }
+    
     private static double Function(double x) => Math.Pow(3, x) - 2 * x - 5;
 
     private static double Derivative(double x) => Math.Pow(3, x) * Math.Log(3) - 2;
 
     private static void PrintRow(params string[] columns) {
         var width = (150 - columns.Length) / columns.Length;
-        var row = columns.Aggregate("|", (current, column) => current + (AlignCentre(column, width) + "|"));
+        var row = columns.Aggregate("|", (current, column) => current + AlignCentre(column, width) + "|");
 
         Console.WriteLine(row);
     }

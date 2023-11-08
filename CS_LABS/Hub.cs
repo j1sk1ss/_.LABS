@@ -21,7 +21,8 @@ namespace CS_LABS {
             });
             
             var numMethods = new LABS.WorkType(new() {
-                new LABS.NUM_METHODS.FIRST_LAB.First()
+                new LABS.NUM_METHODS.FIRST_LAB.First(),
+                new LABS.NUM_METHODS.SECOND_LAB.Second()
             });
 
             numMethods.Initialize();
