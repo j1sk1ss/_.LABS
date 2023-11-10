@@ -8,13 +8,14 @@ public abstract class Quest {
         while (true) {
             Console.Write("\r\nSelect task number between 0 and {0}: ", Quests.Count - 1);
             var answer = Console.ReadLine()!.ToLower();
-
+            Console.Clear();
+            
             if (answer == "exit") break;
             
             Quests[int.TryParse(answer, out var position) switch {
                 false   => 0,
                 _       => position
-            }]();   
+            }]();
         }
     }
     

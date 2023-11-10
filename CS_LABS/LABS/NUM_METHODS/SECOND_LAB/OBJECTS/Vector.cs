@@ -16,8 +16,7 @@ public class Vector {
     private int Size { get; }
     private double[] Body { get; }
 
-    public double this[int index]
-    {
+    public double this[int index] {
         get => Body[index];
         set => Body[index] = value;
     }
@@ -25,4 +24,6 @@ public class Vector {
     public string Print() => Body.Aggregate("", (current, t) => current + $"{t}, ");
 
     public string VerticalPrint() => Body.Aggregate("", (current, t) => current + $"{t}\n");
+    
+    public void Swipe(int first, int second) => (Body[first], Body[second]) = (Body[second], Body[first]);
 }
