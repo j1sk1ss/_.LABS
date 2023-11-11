@@ -25,7 +25,7 @@ namespace CS_LABS {
                 new LABS.NUM_METHODS.SECOND_LAB.Second()
             });
 
-            numMethods.Initialize();
+            methods.Initialize();
         }
     }
 }

@@ -98,16 +98,18 @@ public class Sixth : Quest {
                 }
             );
         
-        var answer = Enumerable.Range(1, 9).Select(floor => {
+        var answer = Enumerable.Range(1, 9).SelectMany(floor => {
             return Enumerable.Range(1, 4).Select(entrance => new {
+                Entrance  = entrance,
                 Floor     = floor,
                 DebtCount = inhabitants.Count(man => man.Floor == floor && man.Entrance == entrance && man.Debt > 0),
                 DebtSum   = inhabitants.Where(man => man.Floor == floor && man.Entrance == entrance && man.Debt > 0).Sum(x => x.Debt)
             });
-        }).SelectMany(x => x).OrderBy(x => x.DebtCount)
+        }).OrderBy(x => x.DebtCount)
             .Where(x => x.DebtCount > 0);
 
         foreach (var floor in answer) 
-            Console.WriteLine("Count: {0} | Floor: {1} Summary: {2}", floor.DebtCount, floor.Floor, floor.DebtSum);
+            Console.WriteLine("Count: {0} | Floor: {1} & Entrance: {2} Summary: {3}", 
+                floor.DebtCount, floor.Floor, floor.Entrance, floor.DebtSum);
     }
 }

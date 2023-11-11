@@ -12,10 +12,12 @@ public class Second: Quest {
             SecondTask,
             ThirdTask,
             FourthTask,
-            FifesTask
+            FifesTask,
+            SixTask
         };
     }
 
+    private Matrix _matrix;
     private readonly Matrix _equationSystem = new (new[,] {
         {-0.86, 0.23, 0.18, 0.17, 1.42},
         {0.12, -1.14, 0.08, 0.09, 0.83},
@@ -32,30 +34,33 @@ public class Second: Quest {
     }
     
     private void FirstTask() {
-        var matrix = new Matrix((double[,])_equationSystem.Body.Clone());
-        var result = new double[matrix.Body.GetLength(0)];
+        _matrix = new Matrix((double[,])_equationSystem.Body.Clone());
+        var result = new double[_matrix.Body.GetLength(0)];
         
-        matrix.ToTriangle(Matrix.Type.Max, Matrix.CalculationType.None);
-        BackForward(matrix, new Vector(result));
-        Console.WriteLine("Output matrix: \n{0}\nAnswer: \n{1}", matrix.Print(), new Vector(result).Print());
+        _matrix.ToTriangle(Matrix.Type.Max, Matrix.CalculationType.None);
+        BackForward(_matrix, new Vector(result));
+        Console.WriteLine("Output matrix: \n{0}\nAnswer: \n{1}", _matrix.Print(), new Vector(result).Print());
+        Console.WriteLine("Determinant: {0}", _matrix.DeleteColumn(_matrix.Body.GetLength(1) - 1).Determinant());
     }
     
     private void SecondTask() {
-        var matrix = new Matrix((double[,])_equationSystem.Body.Clone());
-        var result = new double[matrix.Body.GetLength(0)];
+        _matrix = new Matrix((double[,])_equationSystem.Body.Clone());
+        var result = new double[_matrix.Body.GetLength(0)];
         
-        matrix.ToTriangle(Matrix.Type.Max, Matrix.CalculationType.Row);
-        BackForward(matrix, new Vector(result));
-        Console.WriteLine("Output matrix: \n{0}\nAnswer: \n{1}", matrix.Print(), new Vector(result).Print());
+        _matrix.ToTriangle(Matrix.Type.Max, Matrix.CalculationType.Row);
+        BackForward(_matrix, new Vector(result));
+        Console.WriteLine("Output matrix: \n{0}\nAnswer: \n{1}", _matrix.Print(), new Vector(result).Print());
+        Console.WriteLine("Determinant: {0}", _matrix.DeleteColumn(_matrix.Body.GetLength(1) - 1).Determinant());
     }
     
     private void ThirdTask() {
-        var matrix = new Matrix((double[,])_equationSystem.Body.Clone());
-        var result = new double[matrix.Body.GetLength(0)];
+        _matrix = new Matrix((double[,])_equationSystem.Body.Clone());
+        var result = new double[_matrix.Body.GetLength(0)];
         
-        matrix.ToTriangle(Matrix.Type.Max, Matrix.CalculationType.Column);
-        BackForward(matrix, new Vector(result));
-        Console.WriteLine("Output matrix: \n{0}\nAnswer: \n{1}", matrix.Print(), new Vector(result).Print());
+        _matrix.ToTriangle(Matrix.Type.Max, Matrix.CalculationType.Column);
+        BackForward(_matrix, new Vector(result));
+        Console.WriteLine("Output matrix: \n{0}\nAnswer: \n{1}", _matrix.Print(), new Vector(result).Print());
+        Console.WriteLine("Determinant: {0}", _matrix.DeleteColumn(_matrix.Body.GetLength(1) - 1).Determinant());
     }
 
     private void FourthTask() {
@@ -65,6 +70,7 @@ public class Second: Quest {
         var vector = matrix.ToTriangle(Matrix.Type.Max, Matrix.CalculationType.Both);
         BackForward(matrix, new Vector(result));
         Console.WriteLine("Output matrix: \n{0}\nAnswer: \n{1}\n{2}", matrix.Print(), new Vector(result).Print(), vector.Print());
+        Console.WriteLine("Determinant: {0}", _matrix.DeleteColumn(_matrix.Body.GetLength(1) - 1).Determinant());
     }
     
     private readonly Matrix _coefficientsSystem = new (new[,] {
@@ -124,5 +130,10 @@ public class Second: Quest {
         }
 
         Console.WriteLine("Solution to the system of linear equations: \n{0}", new Vector(x).Print());
+    }
+
+    private void SixTask() {
+        Console.WriteLine("Inverted matrix: \n{0}", 
+            _equationSystem.DeleteColumn(_equationSystem.Body.GetLength(1) - 1).Inverse().Print());
     }
 }

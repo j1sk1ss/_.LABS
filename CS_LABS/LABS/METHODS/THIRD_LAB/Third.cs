@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
+using CS_LABS.LABS.METHODS.THIRD_LAB.CLASSES.SECOND_TASK;
 using CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.FIRST_TASK;
 using CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.SECOND_TASK;
 
@@ -50,21 +50,15 @@ public class Third : Quest {
             new ("Оренбуржье",      "Берг",         "Оренбург")
         });
  
+        // 
         Console.WriteLine("\r\nAuthor sort:\n");
-        bookStack.Sort(books => {
-            return books.OrderBy(parameter => parameter.Author.Length).ToList();
-        }).ForEach(book => book.Print());
-        
+        bookStack.ClassicSort(book => book.Author.Length).PrintBookStack();
+
         Console.WriteLine("\r\nName sort:\n");
-        bookStack.Sort(books => {
-            return books.OrderBy(parameter => parameter.Name.Length).ToList();
-        }).ForEach(book => book.Print());
+        bookStack.ClassicSort(book => book.Name.Length).PrintBookStack();
         
         Console.WriteLine("\r\nPublisher sort:\n");
-        bookStack.Sort(books => {
-            return books.OrderBy(parameter => parameter.Publisher.Length).ToList();
-        }).ForEach(book => book.Print());
+        bookStack.ClassicSort(book => book.Publisher.Length).PrintBookStack();
     }
-    
     // Third in UI
 }

@@ -27,8 +27,8 @@ public class Fifes : Quest {
     /// </summary>
     private void SecondTask() {
         const int neededIndex = 25;
-        var enumerable = Enumerable.Range(0, 150).Where((number, index) => 
-            index >= neededIndex && number is >= 10 and < 100 && number % 2 != 0
+        var enumerable = Enumerable.Range(0, 150).Skip(neededIndex).Where((number) => 
+            number is >= 10 and < 100 && number % 2 != 0
         ).OrderByDescending(x => x).Select(x => {
             Console.WriteLine(x);
             return x;
@@ -73,10 +73,8 @@ public class Fifes : Quest {
         var b = Enumerable.Range(20, 190);
 
         var sum =
-            a.Select(firstNum => b.Select(secondNum => firstNum + secondNum))
-                .SelectMany(x => x)
-                .OrderBy(x => x)
-                .ToList();
+            a.SelectMany(firstNum => b.Select(secondNum => firstNum + secondNum))
+                .OrderBy(x => x);
 
         foreach (var num in sum) 
             Console.WriteLine($"Sum equals: {num}");

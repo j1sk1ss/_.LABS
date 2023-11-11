@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.SECOND_TASK;
@@ -5,9 +6,10 @@ namespace CS_LABS.LABS.METHODS.THIRD_LAB.OBJECTS.SECOND_TASK;
 public class BookStack {
     public BookStack(List<Book> books) => Books = books;
     
-    private List<Book> Books { get; }
-    
-    public delegate List<Book> SortType(List<Book> books);
-    
-    public List<Book> Sort(SortType sortType) => sortType.Invoke(Books);
+    public List<Book> Books { get; }
+
+    public void PrintBookStack() {
+        foreach (var book in Books) 
+            Console.WriteLine("Name: {0} | Author: {1} | Publisher: {2}", book.Name, book.Author, book.Publisher);
+    }
 }
