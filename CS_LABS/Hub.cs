@@ -22,13 +22,17 @@ namespace CS_LABS {
                 new LABS.PROBABILITY_THEORY.FIRST_LAB.First()
             });
             
+            var discret = new LABS.WorkType(new() {
+                new LABS.DISCRET_MATH.FIRST_LAB.First()
+            });
+            
             var numMethods = new LABS.WorkType(new() {
                 new LABS.NUM_METHODS.FIRST_LAB.First(),
                 new LABS.NUM_METHODS.SECOND_LAB.Second(),
                 new LABS.NUM_METHODS.THIRD_LAB.Third(),
             });
 
-            crypto.Initialize();
+            discret.Initialize();
         }
     }
 }
