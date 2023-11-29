@@ -79,33 +79,20 @@ public static class Script {
     }
 
     public static void HoardMethod() {
-        const int numberOfIterations = 5;
-        
-        var result = new List<double>();
-        var arrayToOutput = new double[numberOfIterations, 7];
-
+        List<double> result = new List<double>();
         result.Add(-2.4);
         result.Add(-2.6);
-        
-        for (var n = 0; n < numberOfIterations; n++) {
-            result.Add(result[n] - Function(result[n]) * (result[n + 1] - result[n]) / (Function(result[n + 1]) - Function(result[n])));
-            
-            arrayToOutput[n, 0] = n;
-            arrayToOutput[n, 1] = result[n+2];
-            arrayToOutput[n, 2] = result[n];
-            arrayToOutput[n, 3] = result[n+1];
-            arrayToOutput[n, 4] = Function(result[n]);
-            arrayToOutput[n, 5] = Function(result[n + 1]);
-            arrayToOutput[n, 6] = Math.Abs(result[n + 1] - result[n]);
-        }
-        
-        PrintRow("n", "xn + 1", "xn", "xn - 1", "f(xn - 1)", "f(xn)", "|x - xn - 1|");
-        for (var i = 1; i < numberOfIterations + 1; i++) {
-            var array = new string[7];
-            for (var j = 0; j < 7; j++) 
-                array[j] = arrayToOutput[i - 1, j].ToString(CultureInfo.InvariantCulture);
-
-            PrintRow(array);
+        for (var n = 0; n < 15; n++) {
+            result.Add(result[n] - Function(result[n]) * (result[n+1] - result[n]) / (Function(result[n+1]) - Function(result[n])));
+            Console.WriteLine("n = " + n);
+            Console.WriteLine("xn+1 = " + result[n + 2]);
+            Console.WriteLine("xn = " + result[n]);
+            Console.WriteLine("xn-1 = " + result[n + 1]);
+                
+            Console.WriteLine("fxn-1 = " + Function(result[n]));
+            Console.WriteLine("fxn = " + Function(result[n+1]));
+            Console.WriteLine("|xn - xn-1| = " + Math.Abs(result[n + 1] - result[n]));
+            Console.WriteLine("----------------------------------");
         }
     }
     
