@@ -7,6 +7,9 @@ namespace CS_LABS.LABS.NUM_METHODS.SECOND_LAB;
 
 public class Second: Quest {
     public Second() {
+        // Console.BackgroundColor = ConsoleColor.White;
+        // Console.ForegroundColor = ConsoleColor.Black;
+        
         Quests = new List<Action> {
             FirstTask,
             SecondTask,

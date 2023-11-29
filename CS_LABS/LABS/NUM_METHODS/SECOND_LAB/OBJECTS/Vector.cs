@@ -13,7 +13,7 @@ public class Vector {
         Size = Body.Length;
     }
     
-    private int Size { get; }
+    public int Size { get; }
     private double[] Body { get; }
 
     public double this[int index] {

@@ -10,7 +10,7 @@ public class First : Quest {
             Example,
             SecondExample,
             ThirdExample,
-            FirstTask,
+            FirstTask, // 3
             SecondTask,
             ThirdTask,
             FourthTask,

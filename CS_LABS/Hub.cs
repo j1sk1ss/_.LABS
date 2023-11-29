@@ -13,7 +13,9 @@ namespace CS_LABS {
             });
             
             var crypto = new LABS.WorkType(new() {
-                new LABS.CRYPTO.FIRST_LAB.First()
+                new LABS.CRYPTO.FIRST_LAB.First(),
+                new LABS.CRYPTO.SECOND_LAB.Second(),
+                new LABS.CRYPTO.THIRD_LAB.Third()
             });
 
             var probability = new LABS.WorkType(new() {
@@ -22,10 +24,11 @@ namespace CS_LABS {
             
             var numMethods = new LABS.WorkType(new() {
                 new LABS.NUM_METHODS.FIRST_LAB.First(),
-                new LABS.NUM_METHODS.SECOND_LAB.Second()
+                new LABS.NUM_METHODS.SECOND_LAB.Second(),
+                new LABS.NUM_METHODS.THIRD_LAB.Third(),
             });
 
-            methods.Initialize();
+            crypto.Initialize();
         }
     }
 }
