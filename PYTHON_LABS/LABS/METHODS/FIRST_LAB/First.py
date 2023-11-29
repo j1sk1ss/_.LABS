@@ -42,8 +42,9 @@ def first_task():
 # Дано трехзначное число. В нем зачеркнули первую справа цифру и
 # приписали ее слева. Вывести полученное число.
 def second_task():
-    number = input('Write number: ')
-    print(f'{number[len(number) - 1:]}{number[:len(number) - 1]}')
+    number = input('Write number: ') #
+    new_num = int(f'{number[len(number) - 1:]}{number[:len(number) - 1]}')
+    print(new_num)
 
 
 # Дан номер года (положительное целое число). Определить количество дней
@@ -79,7 +80,7 @@ def fifes_task():
     expected = int(input('Set N: '))
     if expected < 1:
         print('Was set wrong value. Changed to 2')
-        expected = 2
+        return
 
     array = [1, 1]
     number = 0
@@ -88,7 +89,7 @@ def fifes_task():
         array.append(number)
 
     if expected in array:
-        print(f'{number} in this array')
+        print(f'{expected} in this array')
     else:
         print('This number not exist in array')
 
