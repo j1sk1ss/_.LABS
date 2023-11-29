@@ -23,3 +23,6 @@ class Point:
 
     def print(self):
         return f'x: {self.x} | y: {self.y}'
+
+    def __str__(self):
+        return f'x: {self.x} | y: {self.y}'
