@@ -12,6 +12,7 @@ matrix_t* new_matrix(int x, int y) {
     }
 
     matrix_t* matrix = (matrix_t*)malloc(sizeof(matrix_t));
+    
     matrix->body = matrix_raw;
     matrix->x = x;
     matrix->y = y;
@@ -58,6 +59,9 @@ void input_matrix(matrix_t* matrix) {
 }
 
 void free_matrix(matrix_t* matrix) {
+    for (int i = 0; i < matrix->x; i++)
+        free(matrix->body[i]);
+
     free(matrix->body);
     free(matrix);
 }

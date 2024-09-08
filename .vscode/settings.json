@@ -2,6 +2,7 @@
     "files.associations": {
         "matrix.h": "c",
         "cstring": "c",
-        "locale": "c"
+        "locale": "c",
+        "cstdio": "c"
     }
 }
