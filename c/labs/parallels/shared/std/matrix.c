@@ -3,6 +3,7 @@
 
 matrix_t* new_matrix(int x, int y) {
     int** matrix_raw = (int**)malloc(x * sizeof(int*));
+    #pragma omp parallel for
     for (int i = 0; i < x; i++) {
         matrix_raw[i] = (int*)malloc(y * sizeof(int));
         for (int j = 0; j < y; j++) {
@@ -34,6 +35,7 @@ void print_matrix(matrix_t* matrix) {
 
 void fill_random(matrix_t* matrix) {
     srand(time(0)); 
+    #pragma omp parallel for
     for (int i = 0; i < matrix->x; i++) {
         for (int j = 0; j < matrix->y; j++) {
             matrix->body[i][j] = rand() % 100; 
@@ -49,7 +51,7 @@ void input_matrix(matrix_t* matrix) {
 
             char input[25];
             scanf("%s", input);
-            
+
             matrix->body[i][j] = atoi(input); 
         }
     }

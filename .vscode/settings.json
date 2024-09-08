@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "matrix.h": "c"
+        "matrix.h": "c",
+        "cstring": "c",
+        "locale": "c"
     }
 }

@@ -11,10 +11,6 @@
 #define OMP_SECTIONS_NUM    2
 
 
-int main(void);
-void print_matrix(matrix_t* matrix, int x, int y);
-
-
 // SECTIONS
 // Разработайте программу для вычисления количества седловых
 // элементов в матрице (элементы наименьшие в строке, но наибольшие в
@@ -26,8 +22,15 @@ int main(void) {
     printf("Type matrix size:\n");
 
     char x_size[50], y_size[50];
+    printf("X: ");
     scanf("%s", x_size);
+
+    printf("Y: ");
     scanf("%s", y_size);
+
+    if (strlen(x_size) > 3 || strlen(y_size) > 3) {
+        printf("[WARN] Cols and Rows to large!");
+    }
 
     int x, y;
     x = atoi(x_size);
