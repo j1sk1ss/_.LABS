@@ -1,3 +1,6 @@
+// g++-14 -Wall first_lab/reference.c shared/std/* -fopenmp -o executables/ref
+// avg. time: 27.81 seconds on 10000x10000 random matrix (5 times, same random seed)
+
 #include "../shared/include/matrix.h"
 
 #include <stdio.h>
@@ -8,11 +11,10 @@
 #include <stdbool.h>
 
 
-#define OMP_SECTIONS_NUM    2
 #define RANDOM
 
 
-// БЕЗ ВСЕГО
+// Reference alghoritm
 // Разработайте программу для вычисления количества седловых
 // элементов в матрице (элементы наименьшие в строке, но наибольшие в
 // столбце)
@@ -21,7 +23,7 @@ int main(int argc, char* argv[]) {
 #pragma region [Matrix setup]
 
     int x, y;
-    if (argc == 0) {
+    if (argc <= 2) {
         printf("Type matrix size:\n");
 
         char x_size[50], y_size[50];
@@ -32,7 +34,7 @@ int main(int argc, char* argv[]) {
         scanf("%s", y_size);
 
         if (strlen(x_size) > 3 || strlen(y_size) > 3) {
-            printf("[WARN] Cols and Rows to large!");
+            printf("[WARN] Cols and Rows to large!\n");
         }
 
         x = atoi(x_size);
@@ -55,27 +57,32 @@ int main(int argc, char* argv[]) {
 #pragma region [Calculatings]
 
     int count = 0;
-    for (int i = 0; i < x / OMP_SECTIONS_NUM; i++) {
-        for (int j = 0; j < y; j++) {
+    for (int i = 0; i < matrix->x; i++) {
+        for (int j = 0; j < matrix->y; j++) {
             int current = matrix->body[i][j];
             bool is_min_in_row = true;
             bool is_max_in_col = true;
-            for (int k = 0; k < y; k++) {
+
+            // First we check if element is min in her element
+            for (int k = 0; k < matrix->y; k++) {
                 if (matrix->body[i][k] < current) {
                     is_min_in_row = false;
                     break;
                 }
             }
 
-            for (int k = 0; k < x; k++) {
-                if (matrix->body[k][j] > current) {
-                    is_max_in_col = false;
-                    break;
+            // If we already know that this element not target
+            // We just skip this part
+            if (is_min_in_row) {
+                for (int k = 0; k < matrix->x; k++) {
+                    if (matrix->body[k][j] > current) {
+                        is_max_in_col = false;
+                        break;
+                    }
                 }
             }
 
-            if (is_max_in_col == true && is_min_in_row == true) {
-                #pragma omp atomic
+            if (is_max_in_col && is_min_in_row) {
                 count++;
             }
         }
@@ -83,14 +90,7 @@ int main(int argc, char* argv[]) {
 
 #pragma endregion
 
-    if (argc > 3) {
-        if (strcmp(argv[3], "without-log") != 0)
-            printf("\nAnswer: %i", count);
-    }
-    else {
-        printf("\nAnswer: %i", count);
-    }
-
+    printf("Answer: %i\n", count);
     free_matrix(matrix);
     return 0;
 }
