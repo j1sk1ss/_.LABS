@@ -3,6 +3,16 @@
         "matrix.h": "c",
         "cstring": "c",
         "locale": "c",
-        "cstdio": "c"
+        "cstdio": "c",
+        "__locale": "c",
+        "__string": "c",
+        "string": "c",
+        "string_view": "c",
+        "__config": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "stdbool.h": "c",
+        "memory.h": "c",
+        "dict.h": "c"
     }
 }

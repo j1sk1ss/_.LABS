@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <omp.h>
+#include <string.h>
 
 
 struct Matrix {
@@ -13,8 +14,8 @@ struct Matrix {
     int** body;
 
    void (*print)(struct Matrix* matrix);
-   void (*fill_rand)(struct Matrix* matrix); 
-   void (*fill_input)(struct Matrix* matrix); 
+   void (*fill_rand)(struct Matrix* matrix);
+   void (*fill_input)(struct Matrix* matrix);
 } typedef matrix_t;
 
 

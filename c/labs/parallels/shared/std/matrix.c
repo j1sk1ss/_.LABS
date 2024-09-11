@@ -11,7 +11,7 @@ matrix_t* new_matrix(int x, int y) {
         }
     }
 
-    matrix_t* matrix = (matrix_t*)malloc(sizeof(matrix_t));
+    matrix_t* matrix = (matrix_t*)calloc(1, sizeof(matrix_t));
     
     matrix->body = matrix_raw;
     matrix->x = x;
