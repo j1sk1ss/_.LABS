@@ -1,4 +1,4 @@
-// g++-14 -Wall first_lab/reference.c shared/std/* -fopenmp -o executables/ref
+// gcc-14 -Wall first_lab/reference.c shared/std/* -fopenmp -o executables/ref
 // avg. time: 7.77 seconds on 10000x10000 random matrix (5 times, same random seed)
 
 #include "../shared/include/matrix.h"
