@@ -1,6 +1,7 @@
-// gcc-14 -Wall first_lab/first.c shared/std/* -fopenmp -o executables/tar
-// avg. time: 91.19 seconds on 10000x10000 random matrix (5 times, same random seed) ver. 1 with atomic and old parallel
-// avg. time: 14.14 seconds on 10000x10000 random matrix (5 times, same random seed) ver. 2 without atomic and new parallel
+// gcc-14 -Wall first_lab/first_3.c shared/std/* -fopenmp -o executables/first3.bin
+// avg. time: 23.36 seconds on 100000x100000 random matrix (5 times, same matrix)
+// avg. time: 2.55 seconds on 50000x50000 random matrix (5 times, same matrix)
+// avg. time: 0.11 seconds on 10000x10000 random matrix (5 times, same matrix)
 
 #include "../shared/include/matrix.h"
 
@@ -13,7 +14,7 @@
 
 
 #define RANDOM
-#define OMP_SECTIONS_NUM 2
+#define OMP_SECTIONS_NUM 3
 
 // Sections in OpenMP
 // Разработайте программу для вычисления количества седловых
@@ -95,7 +96,36 @@ int main(int argc, char* argv[]) {
 
             #pragma omp section
             {
-                for (int i = x / OMP_SECTIONS_NUM; i < x; i++) {
+                for (int i = x / OMP_SECTIONS_NUM; i < (x / OMP_SECTIONS_NUM) * 2; i++) {
+                    for (int j = 0; j < y; j++) {
+                        int current = matrix->body[i][j];
+                        bool is_min_in_row = true;
+                        bool is_max_in_col = true;
+                        for (int k = 0; k < y; k++) {
+                            if (matrix->body[i][k] < current) {
+                                is_min_in_row = false;
+                                break;
+                            }
+                        }
+
+                        if (is_min_in_row)
+                            for (int k = 0; k < x; k++) {
+                                if (matrix->body[k][j] > current) {
+                                    is_max_in_col = false;
+                                    break;
+                                }
+                            }
+
+                        if (is_max_in_col && is_min_in_row) {
+                            count++;
+                        }
+                    }
+                }
+            }
+
+            #pragma omp section
+            {
+                for (int i = (x / OMP_SECTIONS_NUM) * 2; i < x; i++) {
                     for (int j = 0; j < y; j++) {
                         int current = matrix->body[i][j];
                         bool is_min_in_row = true;

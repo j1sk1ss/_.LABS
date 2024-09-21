@@ -1,5 +1,7 @@
 // g++-14 -Wall first_lab/reference.c shared/std/* -fopenmp -o executables/ref
-// avg. time: 27.81 seconds on 10000x10000 random matrix (5 times, same random seed)
+// avg. time: 23.34 seconds on 100000x100000 random matrix (5 times, same matrix)
+// avg. time: 2.55 seconds on 50000x50000 random matrix (5 times, same matrix)
+// avg. time: 11.84 seconds on 10000x10000 random matrix (5 times, same matrix)
 
 #include "../shared/include/matrix.h"
 
@@ -22,8 +24,10 @@ int main(int argc, char* argv[]) {
 
 #pragma region [Matrix setup]
 
-    int x, y;
-    if (argc <= 2) {
+    matrix_t* matrix = NULL;
+
+    int x = 0, y = 0;
+    if (argc < 2) {
         printf("Type matrix size:\n");
 
         char x_size[50], y_size[50];
@@ -33,24 +37,24 @@ int main(int argc, char* argv[]) {
         printf("Y: ");
         scanf("%s", y_size);
 
-        if (strlen(x_size) > 3 || strlen(y_size) > 3) {
+        if (strlen(x_size) >= 4 || strlen(y_size) >= 4) {
             printf("[WARN] Cols and Rows to large!\n");
         }
 
         x = atoi(x_size);
         y = atoi(y_size);
-    } else {
-        x = atoi(argv[1]);
-        y = atoi(argv[2]);
-    }
-    
-    matrix_t* matrix = new_matrix(x, y);
 
+        matrix = new_matrix(x, y);
 #ifndef RANDOM
-    matrix->fill_input(matrix);
+        matrix->fill_input(matrix);
 #else
-    matrix->fill_rand(matrix);
+        matrix->fill_rand(matrix);
 #endif
+
+    } else {
+        matrix = load_matrix_from_file(argv[1]);
+        if (matrix == NULL) return -1;
+    }
 
 #pragma endregion
 
