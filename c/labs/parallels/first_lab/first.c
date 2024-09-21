@@ -23,8 +23,10 @@ int main(int argc, char* argv[]) {
 
 #pragma region [Matrix setup]
 
+    matrix_t* matrix = NULL;
+
     int x = 0, y = 0;
-    if (argc <= 2) {
+    if (argc < 2) {
         printf("Type matrix size:\n");
 
         char x_size[50], y_size[50];
@@ -40,18 +42,18 @@ int main(int argc, char* argv[]) {
 
         x = atoi(x_size);
         y = atoi(y_size);
-    } else {
-        x = atoi(argv[1]);
-        y = atoi(argv[2]);
-    }
 
-    matrix_t* matrix = new_matrix(x, y);
-
+        matrix = new_matrix(x, y);
 #ifndef RANDOM
-    matrix->fill_input(matrix);
+        matrix->fill_input(matrix);
 #else
-    matrix->fill_rand(matrix);
+        matrix->fill_rand(matrix);
 #endif
+
+    } else {
+        matrix = load_matrix_from_file(argv[1]);
+        if (matrix == NULL) return -1;
+    }
 
 #pragma endregion
 

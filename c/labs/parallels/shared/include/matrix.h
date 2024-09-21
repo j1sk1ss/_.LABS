@@ -11,7 +11,7 @@
 struct Matrix {
     int x;
     int y;
-    int** body;
+    uint8_t** body;
 
    void (*print)(struct Matrix* matrix);
    void (*fill_rand)(struct Matrix* matrix);
@@ -24,5 +24,8 @@ void fill_random(matrix_t* matrix);
 void input_matrix(matrix_t* matrix);
 matrix_t* new_matrix(int x, int y);
 void free_matrix(matrix_t* matrix);
+
+matrix_t* load_matrix_from_file(char* save_path);
+int save_matrix2file(char* save_path, matrix_t* matrix);
 
 #endif
