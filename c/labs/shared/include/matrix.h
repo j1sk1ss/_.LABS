@@ -19,10 +19,12 @@ struct Matrix {
 } typedef matrix_t;
 
 
+matrix_t* new_matrix(int x, int y);
+matrix_t* copy_matrix(matrix_t* matrix);
+
 void print_matrix(matrix_t* matrix);
 void fill_random(matrix_t* matrix);
 void input_matrix(matrix_t* matrix);
-matrix_t* new_matrix(int x, int y);
 void free_matrix(matrix_t* matrix);
 
 matrix_t* load_matrix_from_file(char* save_path);

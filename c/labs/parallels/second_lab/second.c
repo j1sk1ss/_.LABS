@@ -7,7 +7,6 @@
 #include <string.h>
 #include <omp.h>
 #include <stdlib.h>
-#include <time.h>
 #include <stdbool.h>
 
 
@@ -43,7 +42,7 @@ int main(int argc, char* argv[]) {
         x = atoi(argv[1]);
         y = atoi(argv[2]);
     }
-    
+
     matrix_t* matrix = new_matrix(x, y);
 
 #ifndef RANDOM

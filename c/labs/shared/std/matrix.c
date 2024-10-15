@@ -12,7 +12,7 @@ matrix_t* new_matrix(int x, int y) {
     }
 
     matrix_t* matrix = (matrix_t*)calloc(1, sizeof(matrix_t));
-    
+
     matrix->body = matrix_raw;
     matrix->x = x;
     matrix->y = y;
@@ -24,6 +24,15 @@ matrix_t* new_matrix(int x, int y) {
     return matrix;
 }
 
+matrix_t* copy_matrix(matrix_t* matrix) {
+    matrix_t* copy = new_matrix(matrix->x, matrix->y);
+    for (int i = 0; i < copy->x; i++)
+        for (int j = 0; j < copy->y; j++)
+            copy->body[i][j] = matrix->body[i][j];
+
+    return copy;
+}
+
 void print_matrix(matrix_t* matrix) {
     for (int i = 0; i < matrix->x; i++) {
         for (int j = 0; j < matrix->y; j++) {
@@ -31,15 +40,15 @@ void print_matrix(matrix_t* matrix) {
         }
 
         printf("\n");
-    } 
+    }
 }
 
 void fill_random(matrix_t* matrix) {
-    srand(time(0)); 
+    srand(time(0));
     #pragma omp parallel for
     for (int i = 0; i < matrix->x; i++) {
         for (int j = 0; j < matrix->y; j++) {
-            matrix->body[i][j] = rand() % 255; 
+            matrix->body[i][j] = rand() % 255;
         }
     }
 }
@@ -53,7 +62,7 @@ void input_matrix(matrix_t* matrix) {
             char input[25];
             scanf("%s", input);
 
-            matrix->body[i][j] = atoi(input); 
+            matrix->body[i][j] = atoi(input);
         }
     }
 }
@@ -68,7 +77,10 @@ void free_matrix(matrix_t* matrix) {
 
 matrix_t* load_matrix_from_file(char* save_path) {
     FILE* file = fopen(save_path, "rb");
-    if (file == NULL) return NULL;    
+    if (file == NULL) {
+        printf("Matrix not found at [%s]\n", save_path);
+        return NULL;
+    }
 
     // Allocate memory for the matrix structure
     matrix_t* matrix = (matrix_t*)malloc(sizeof(matrix_t));

@@ -4,5 +4,6 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 CS_LABS.sln
-c/labs/parallels/executables/
+c/labs/parallels/build/
+c/labs/parallels/data/
 c/labs/crypto/executables/

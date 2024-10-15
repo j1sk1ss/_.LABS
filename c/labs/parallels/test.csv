@@ -1,0 +1,13 @@
+executable,args,execution_time
+reference.bin,data/matrix.mtrx,9957.171263933182
+reference.bin,data/medium_matrix.mtrx,1171.9487149715424
+reference.bin,data/small_matrix.mtrx,11.32003378868103
+first3.bin,data/matrix.mtrx,23.26442813873291
+first3.bin,data/medium_matrix.mtrx,5.272133111953735
+first3.bin,data/small_matrix.mtrx,0.2144320011138916
+first2.bin,data/matrix.mtrx,23.0949866771698
+first2.bin,data/medium_matrix.mtrx,5.271883010864258
+first2.bin,data/small_matrix.mtrx,0.22101616859436035
+first4.bin,data/matrix.mtrx,22.888490915298462
+first4.bin,data/medium_matrix.mtrx,5.261233806610107
+first4.bin,data/small_matrix.mtrx,0.21924710273742676
