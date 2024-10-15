@@ -33,10 +33,10 @@ matrix_t* copy_matrix(matrix_t* matrix) {
     return copy;
 }
 
-void print_matrix(matrix_t* matrix) {
+void print_matrix(matrix_t* matrix, char* method) {
     for (int i = 0; i < matrix->x; i++) {
         for (int j = 0; j < matrix->y; j++) {
-            printf("%i\t", matrix->body[i][j]);
+            printf(method, matrix->body[i][j]);
         }
 
         printf("\n");

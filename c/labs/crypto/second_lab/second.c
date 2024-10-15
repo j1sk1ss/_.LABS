@@ -7,8 +7,8 @@
 #include <time.h>
 
 
-#define HEIGHT  4
-#define WIDTH   4
+#define HEIGHT  6
+#define WIDTH   6
 
 
 matrix_t* rotate_matrix(matrix_t* grid);
@@ -34,15 +34,15 @@ void print_message_iterations(matrix_t* grid, matrix_t* grille, int message_len)
     matrix_t* rot_grille = copy_matrix(grille);
     int message_index = 0;
     for (int turn = 0; turn < 4; turn++) {
-        printf("Итерация %i:\n", turn + 1);
+        printf("Iretaion %i:\n", turn + 1);
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                if (grille->body[i][j] == 1 && message_index < message_len) {
+                if (rot_grille->body[i][j] == 1 && message_index < message_len) {
                     printf("%c\t", grid->body[i][j]);
                     message_index++;
                 }
                 else {
-                    printf("- ");
+                    printf("-\t");
                 }
             }
 
@@ -81,7 +81,7 @@ matrix_t* encrypt(char* message, matrix_t* grille) {
     for (int i = 0; i < HEIGHT; i++) {
         for (int j = 0; j < WIDTH; j++) {
             if (grid->body[i][j] == '\0') {
-                grid->body[i][j] = rand() % 255;
+                grid->body[i][j] = rand() % 128;
             }
         }
     }
@@ -121,11 +121,11 @@ int main(int argc, char* argv[]) {
     grille->body[0][3] = 1;
     grille->body[3][1] = 1;
 
-    char user_input[128];
+    char user_input[128] = { '\0' };
     scanf("%s", user_input);
 
     matrix_t* encrypted_grid = encrypt(user_input, grille);
-    encrypted_grid->print(encrypted_grid);
+    encrypted_grid->print(encrypted_grid, "%c\t");
 
     print_message_iterations(encrypted_grid, grille, strlen(user_input));
 

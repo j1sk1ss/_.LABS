@@ -13,7 +13,7 @@ struct Matrix {
     int y;
     uint8_t** body;
 
-   void (*print)(struct Matrix* matrix);
+   void (*print)(struct Matrix* matrix, char* method);
    void (*fill_rand)(struct Matrix* matrix);
    void (*fill_input)(struct Matrix* matrix);
 } typedef matrix_t;
@@ -22,7 +22,7 @@ struct Matrix {
 matrix_t* new_matrix(int x, int y);
 matrix_t* copy_matrix(matrix_t* matrix);
 
-void print_matrix(matrix_t* matrix);
+void print_matrix(matrix_t* matrix, char* method);
 void fill_random(matrix_t* matrix);
 void input_matrix(matrix_t* matrix);
 void free_matrix(matrix_t* matrix);
