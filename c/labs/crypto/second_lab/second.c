@@ -1,3 +1,5 @@
+// gcc-14 -Wall crypto/second_lab/second_lab.c shared/std/* -fopenmp -o second_crypto
+
 #include "../../shared/include/matrix.h"
 
 #include <stdlib.h>
@@ -132,4 +134,6 @@ int main(int argc, char* argv[]) {
     char* decrypted_message = decrypt(encrypted_grid, grille, strlen(user_input));
     printf("Decrypted: %s\n", decrypted_message);
     free(decrypted_message);
+
+    return 1;
 }
