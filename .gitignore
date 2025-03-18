@@ -17,3 +17,5 @@ c/labs/defence_apps/first_lab/snap.snp
 *.ide-wal.suo
 *.lock
 .suo
+*.json
+.vscode/settings.json
